@@ -1,0 +1,7 @@
+{
+  "name": "stylist-app",
+  "integrations": {
+    "capacitor": {}
+  },
+  "type": "angular"
+}

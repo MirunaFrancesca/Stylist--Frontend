@@ -1,0 +1,33 @@
+ion-content {
+  --ion-background-color: #fcfafb !important;
+}
+
+ion-header {
+  --ion-background-color: black !important;
+}
+
+ion-title {
+  color: white !important;
+  font-size: x-large;
+  text-align: center;
+  font-family: DidonesqueStencilItalic;
+}
+
+.manequin-img {
+  width: 280%;
+}
+
+ion-card {
+  width: 180px;
+}
+
+ion-row {
+  margin-top: 40px;
+}
+
+ion-col {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}

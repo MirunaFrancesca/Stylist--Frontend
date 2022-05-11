@@ -1,0 +1,53 @@
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-title>New apparel</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-header collapse="condense">
+  <ion-toolbar>
+    <ion-title size="large">New apparel</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-card>
+    <ion-card-header>
+      <ion-card-title>Upload photo</ion-card-title>
+    </ion-card-header>
+  
+    <ion-card-content>
+      <ion-img *ngIf="isUploaded" [src]=apparelUploadedImage></ion-img>
+      <ion-img *ngIf="!isUploaded" [src]=apparelDefaultImage></ion-img>
+      <ion-fab vertical="bottom" horizontal="end" slot="fixed">
+        <ion-fab-button (click)="addApparelPhoto()">
+          <ion-icon name="camera"></ion-icon>
+        </ion-fab-button>
+      </ion-fab>
+    </ion-card-content>
+  </ion-card>
+
+  <form [formGroup]="ionicForm" (ngSubmit)="submitForm()" novalidate vertical="bottom">
+    <ion-item lines="full">
+      <ion-label position="floating">Type</ion-label>
+      <ion-select placeholder="Select Type" formControlName="type">
+        <ion-select-option *ngFor="let type of types" [value]="type">{{ type }}</ion-select-option>
+      </ion-select>
+      <ion-note *ngIf="isSubmitted && errorControl.type.errors?.required" slot="error">Type is required</ion-note>
+    </ion-item>
+
+    <ion-item lines="full">
+      <ion-label position="floating">Colour</ion-label>
+      <ion-select placeholder="Select Colour" formControlName="colour" >
+        <ion-select-option *ngFor="let colour of colours" [value]="colour">{{ colour }}</ion-select-option>
+      </ion-select>
+      <ion-note *ngIf="isSubmitted && errorControl.colour.errors?.required"slot="error">Colour is required.</ion-note>
+    </ion-item>
+
+    <ion-row>
+      <ion-col>
+        <ion-button type="submit" color="secondary" expand="block">Submit</ion-button>
+      </ion-col>
+    </ion-row>
+  </form>
+</ion-content>

@@ -1,0 +1,17 @@
+<ion-content fullscreen="true" scrollY="false">
+  <ion-title>Stylist</ion-title>
+
+  <div class="login">
+    <ion-item lines="none">
+      <ion-input [(ngModel)]="username" placeholder="Username or email"></ion-input>
+    </ion-item>
+
+    <ion-item lines="none">
+      <ion-input [(ngModel)]="pw" [type]="showPassword ? 'text' : 'password'" placeholder="Password"></ion-input>
+      <p class="pw-toggle" slot="end" (click)="showPassword = !showPassword"> {{ showPassword ? 'HIDE' : 'SHOW' }} </p>
+    </ion-item>
+
+    <ion-button expand="block" class="login-btn" [class.login-valid]="email != '' && pw != ''" (click)="login()">Sign In</ion-button>
+
+  </div>
+</ion-content>

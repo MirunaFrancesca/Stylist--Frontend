@@ -1,0 +1,32 @@
+<ion-menu contentId="main" menuId="myMenu" side="start">
+  <ion-header>
+    <ion-toolbar>
+      <ion-title><h1>Menu</h1></ion-title>
+    </ion-toolbar>
+  </ion-header>
+
+  <ion-content>
+    <div *ngFor="let item of menuItems">
+      <ion-menu-toggle>
+        <ion-item
+        button
+        (click)="setTitle(item.title)"
+        [routerLink]="item.path"
+        routerDirection="root"
+        routerLinkActive="active-item"
+        [routerLinkActiveOptions]="{exact: true}"
+        >  
+          <ion-icon *ngIf="item.icon==''" [src]=iconHanger slot="start"></ion-icon>
+          <ion-icon *ngIf="item.icon!=''" [name]="item.icon" slot="start"></ion-icon>
+          {{ item.title }}
+        </ion-item>
+      </ion-menu-toggle>
+    </div>
+
+    <ion-button class="logout-btn" (click)="logout()">Logout</ion-button>  
+  </ion-content>
+</ion-menu>
+
+<app-header [title]="title"></app-header>
+
+<ion-router-outlet id="main"></ion-router-outlet>

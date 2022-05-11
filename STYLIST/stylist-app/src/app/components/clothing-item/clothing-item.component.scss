@@ -1,0 +1,10 @@
+img {
+  //this is how you format a picture to have the same size everywhere without cropping it, just resizing automatically
+  width: 300px;
+  height: 300px;
+  object-fit: contain;
+}
+
+ion-card {
+  --ion-background-color: #fffff9 !important;
+}
