@@ -6,7 +6,7 @@ import { AlertController, IonicModule, IonicRouteStrategy } from '@ionic/angular
 
 import { AppComponent } from './app.component';
 import { AppRoutingModule } from './app-routing.module';
-import { ClothingItemDataService } from './services/clothing-item-data.service';
+import { ApparelService } from './services/apparel.service';
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { AutoLoginGuard } from './security/guard/auto-login.guard';
 import { AuthGuard } from './security/guard/auth.guard';
@@ -28,7 +28,7 @@ import { FormsModule } from '@angular/forms';
   //   ClothingItemDataService
   // ],
   providers: [{ provide : RouteReuseStrategy, useClass: IonicRouteStrategy },
-    ClothingItemDataService, PhotoService, AutoLoginGuard, AuthGuard, AlertController,
+    ApparelService, PhotoService, AutoLoginGuard, AuthGuard, AlertController,
     {
       provide: HTTP_INTERCEPTORS,
       useClass: AuthInterceptor,

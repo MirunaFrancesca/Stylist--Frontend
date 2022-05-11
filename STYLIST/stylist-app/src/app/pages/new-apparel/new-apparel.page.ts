@@ -4,6 +4,7 @@ import { FormGroup, FormBuilder, Validators, ValidatorFn } from "@angular/forms"
 import { Camera, CameraResultType, CameraSource } from '@capacitor/camera';
 import { decode } from 'base64-arraybuffer';
 import { HttpEventType, HttpResponse } from '@angular/common/http';
+import { ApparelService } from 'src/app/services/apparel.service';
 
 @Component({
   selector: 'app-new-apparel',
@@ -24,7 +25,7 @@ export class NewApparelPage implements OnInit {
   public colours = ["white", "black", "red", "orange", "yellow", "green", "light blue", "dark blue", "purple", "pink", "brown", "gray"];
 
   constructor(
-    public photoService: PhotoService,
+    public apparelService: ApparelService,
     public formBuilder: FormBuilder) {
   }
 
@@ -45,7 +46,7 @@ export class NewApparelPage implements OnInit {
       return false;
     } 
     else {
-      this.photoService.upload(this.blob)
+      this.apparelService.saveApparel(this.blob, this.ionicForm.value.type, this.ionicForm.value.colour)
       .subscribe(
         (event: any) => {
           if (event.type === HttpEventType.UploadProgress) {

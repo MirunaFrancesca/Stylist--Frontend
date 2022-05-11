@@ -16,20 +16,20 @@
     New apparel
   </ion-button>
 
-  <ion-img [src]=objectURL></ion-img>
-
   <ion-list>
-    <ion-item *ngFor="let outfit of items">
+    <ion-item *ngFor="let apparel of apparels">
       <div class="container">
         <div class="clothing-item">
-          <app-clothing-item [clothingItem]="outfit"></app-clothing-item>
+          <app-apparel [apparel]="apparel"></app-apparel>
         </div>
+
         <div class="middle actions">
           <div class="text edit">
             Edit
             <ion-icon class="card-icon" name="brush"></ion-icon>
           </div>
-          <div class="text delete" (click)="deleteOutfit(outfit.id)">
+          
+          <div class="text delete" (click)="deleteOutfit(apparel.id)">
             Delete
             <ion-icon class="card-icon" name="trash"></ion-icon>
           </div>

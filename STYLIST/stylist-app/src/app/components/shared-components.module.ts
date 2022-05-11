@@ -3,12 +3,12 @@ import { CommonModule } from '@angular/common';
 import { HeaderComponent } from './header/header.component';
 import { IonicModule } from '@ionic/angular';
 import { RouterModule } from '@angular/router';
-import { ClothingItemComponent } from './clothing-item/clothing-item.component';
+import { ApparelComponent } from './apparel/apparel.component';
 
 @NgModule({
   declarations: [
     HeaderComponent,
-    ClothingItemComponent
+    ApparelComponent
   ],
   imports: [
     CommonModule,
@@ -17,7 +17,7 @@ import { ClothingItemComponent } from './clothing-item/clothing-item.component';
   ],
   exports: [
     HeaderComponent,
-    ClothingItemComponent
+    ApparelComponent
   ]
 })
 export class SharedComponentsModule { }
