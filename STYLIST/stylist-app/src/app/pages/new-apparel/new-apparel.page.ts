@@ -1,10 +1,10 @@
 import { Component, OnInit } from '@angular/core';
-import { PhotoService } from 'src/app/services/photo.service';
 import { FormGroup, FormBuilder, Validators, ValidatorFn } from "@angular/forms";
 import { Camera, CameraResultType, CameraSource } from '@capacitor/camera';
 import { decode } from 'base64-arraybuffer';
 import { HttpEventType, HttpResponse } from '@angular/common/http';
 import { ApparelService } from 'src/app/services/apparel.service';
+import { myColours } from './colours.model';
 
 @Component({
   selector: 'app-new-apparel',
@@ -21,8 +21,8 @@ export class NewApparelPage implements OnInit {
   public isUploaded: boolean = false;
   public uploadImageData = new FormData();
 
-  public types = ["T-shirt", "Shirt", "Blouse", "Body", "Trousers", "Shorts", "Skirt", "Dress", "Overall"];
-  public colours = ["white", "black", "red", "orange", "yellow", "green", "light blue", "dark blue", "purple", "pink", "brown", "gray"];
+  public types = ["T-shirt", "Top", "Shirt", "Blouse", "Body", "Pullover", "Trousers", "Shorts", "Skirt", "Dungarees", "Dress", "Overall"];
+  public colours = myColours;
 
   constructor(
     public apparelService: ApparelService,

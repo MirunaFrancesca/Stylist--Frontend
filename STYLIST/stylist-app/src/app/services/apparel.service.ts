@@ -56,4 +56,8 @@ export class ApparelService {
       return this.httpClient.get<Apparel[]>(this.apiUrl + '/get-all', { observe: 'response', withCredentials: true });
   }
 
+  getRandomOufit(): Observable<HttpResponse<Apparel[]>> {
+    return this.httpClient.get<Apparel[]>(this.apiUrl + '/get-outfit', { observe: 'response', withCredentials: true });
+  }
+
 }

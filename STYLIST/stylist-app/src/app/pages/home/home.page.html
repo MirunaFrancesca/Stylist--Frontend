@@ -23,7 +23,8 @@
         </ion-card-header>
 
         <ion-card-content>
-          <ion-img [src]="apparelDefaultImage" alt="photo"></ion-img>
+          <ion-img *ngIf="!isLoaded" [src]="apparelDefaultImage" alt="photo"></ion-img>
+          <ion-img *ngIf="isLoaded" [src]="outfit[0].imageUrl"></ion-img>
         </ion-card-content>
       </ion-card>
 
@@ -35,7 +36,8 @@
         </ion-card-header>
 
         <ion-card-content>
-          <ion-img [src]="apparelDefaultImage" alt="photo"></ion-img>
+          <ion-img *ngIf="!isLoaded" [src]="apparelDefaultImage" alt="photo"></ion-img>
+          <ion-img *ngIf="isLoaded" [src]="outfit[1].imageUrl"></ion-img>
         </ion-card-content>
       </ion-card>
     </ion-col>

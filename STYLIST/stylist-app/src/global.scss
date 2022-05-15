@@ -55,8 +55,27 @@
   --ion-font-family: DidonesqueStencilRoman;
 }
 
-h1, h2, h3 {
+h1,
+h2,
+h3 {
   font-size: 32px;
   font-weight: 500;
   font-family: DidonesqueStencilItalic;
+}
+
+ion-alert {
+  // Checked text color
+  [aria-checked="true"].sc-ion-alert-md .alert-radio-label.sc-ion-alert-md {
+    color: var(--ion-color-step-850, rgb(250, 185, 185));
+  }
+
+  // checkbox or radio button color
+  .alert-radio-inner.sc-ion-alert-md {
+    background-color: #f8e6e7 !important;
+  }
+
+   // checkbox border color
+   [aria-checked="true"].sc-ion-alert-md .alert-radio-icon.sc-ion-alert-md {
+    border-color: rgb(250, 185, 185);
+  }
 }

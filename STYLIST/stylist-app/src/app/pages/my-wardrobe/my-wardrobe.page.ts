@@ -1,8 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { Observable } from 'rxjs';
 import { Apparel } from 'src/app/components/apparel/apparel';
 import { ApparelService } from 'src/app/services/apparel.service';
-import { PhotoService } from 'src/app/services/photo.service';
 
 @Component({
   selector: 'app-my-wardrobe',
@@ -24,10 +22,11 @@ export class MyWardrobePage implements OnInit {
     this.apparelService.getAllApparels()
     .subscribe(res => {
       this.apparels = res.body;
+      console.log(this.apparels);
+
       this.apparels.forEach(item =>{
         this.apparelService.getApparelImage(item.id).subscribe(res =>{
           const objectURL = URL.createObjectURL(res);
-          console.log(objectURL);
           item.imageUrl = objectURL;
         });
       })

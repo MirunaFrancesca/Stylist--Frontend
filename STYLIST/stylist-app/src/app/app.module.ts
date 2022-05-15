@@ -11,7 +11,6 @@ import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { AutoLoginGuard } from './security/guard/auto-login.guard';
 import { AuthGuard } from './security/guard/auth.guard';
 import { AuthInterceptor } from './security/interceptor/auth-interceptor';
-import { PhotoService } from './services/photo.service';
 import { FormsModule } from '@angular/forms';
 
 @NgModule({
@@ -28,7 +27,7 @@ import { FormsModule } from '@angular/forms';
   //   ClothingItemDataService
   // ],
   providers: [{ provide : RouteReuseStrategy, useClass: IonicRouteStrategy },
-    ApparelService, PhotoService, AutoLoginGuard, AuthGuard, AlertController,
+    ApparelService, AutoLoginGuard, AuthGuard, AlertController,
     {
       provide: HTTP_INTERCEPTORS,
       useClass: AuthInterceptor,

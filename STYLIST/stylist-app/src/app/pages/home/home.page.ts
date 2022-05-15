@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { Apparel } from 'src/app/components/apparel/apparel';
+import { ApparelService } from 'src/app/services/apparel.service';
 
 @Component({
   selector: 'app-home',
@@ -9,10 +11,32 @@ export class HomePage implements OnInit {
   manequinImg = "../../../assets/icon/manequin.jpg"
   apparelDefaultImage = "../../../assets/icon/apparel-default-image.png";
   plusIcon = "../../../assets/icon/plusIcon.png";
+  outfit: Array<Apparel> = [];
+  isLoaded: boolean = false;
 
-  constructor() { }
+  constructor(
+    private apparelService: ApparelService
+  ) { }
 
   ngOnInit() {
+    this.fetchOutfit();
+  }
+
+  fetchOutfit(): void {
+    this.isLoaded= false;
+    this.apparelService.getRandomOufit()
+    .subscribe(res => {
+      this.outfit = res.body;
+      console.log(this.outfit);
+
+      this.outfit.forEach(item =>{
+        this.apparelService.getApparelImage(item.id).subscribe(res =>{
+          const objectURL = URL.createObjectURL(res);
+          item.imageUrl = objectURL;
+        });
+      })
+      this.isLoaded = true;
+    })
   }
 
 }

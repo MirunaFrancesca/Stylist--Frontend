@@ -39,7 +39,10 @@
     <ion-item lines="full">
       <ion-label position="floating">Colour</ion-label>
       <ion-select placeholder="Select Colour" formControlName="colour" >
-        <ion-select-option *ngFor="let colour of colours" [value]="colour">{{ colour }}</ion-select-option>
+        <ion-select-option  *ngFor="let colour of colours" [value]="colour">
+          {{ colour }}
+          <ion-img></ion-img>
+        </ion-select-option>
       </ion-select>
       <ion-note *ngIf="isSubmitted && errorControl.colour.errors?.required"slot="error">Colour is required.</ion-note>
     </ion-item>
