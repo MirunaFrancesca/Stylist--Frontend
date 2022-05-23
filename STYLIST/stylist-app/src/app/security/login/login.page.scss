@@ -2,14 +2,6 @@ ion-content {
   --background: #131413;
 }
 
-ion-toolbar {
-  --background: transparent;
-}
-
-ion-buttons > ion-button {
-  font-family: DidonesqueStencilRoman;
-}
-
 ion-title {
   color: white !important;
   font-size: 40px;
@@ -20,9 +12,8 @@ ion-title {
 }
 
 .login {
-
-  padding: 50px;
-  margin-top: 55%;
+  padding: 50px 30px;
+  margin-top: 220px;
 
   ion-item {
     --background: #2d282d;
@@ -40,21 +31,30 @@ ion-title {
   }
 
   .login-btn {
-    border: 1px solid var(--ion-color-dark);
     border-radius: 6px;
-    --background: #f8e6e7;
-    --color: black;
+    --background: var(--ion-color-primary);
+    --color: white;
     font-size: large;
   }
 
   .login-valid {
-    --background: var(--ion-color-primary);
-    --color: white;
+    --background: #f8e6e7;
+    --color: black;
   }
 
   p {
     opacity: 0.8;
     font-size: 14px;
   }
+}
 
+.register-link-container {
+  color: white;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+
+  a {
+    color: white;
+  }
 }

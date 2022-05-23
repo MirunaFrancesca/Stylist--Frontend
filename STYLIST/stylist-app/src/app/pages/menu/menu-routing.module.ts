@@ -18,11 +18,11 @@ const routes: Routes = [
         loadChildren: () =>
         import("../my-wardrobe/my-wardrobe.module").then((m) => m.MyWardrobePageModule),
       },
-      // { 
-      //   path: "my-wardrobe/:id",
-      //   loadChildren: () =>
-      //   import("../details/details.module").then((m) => m.DetailsPageModule)
-      // },
+      {
+        path: "new-apparel/:id",
+        loadChildren: () =>
+        import("../new-apparel/new-apparel.module").then((m) => m.NewApparelPageModule)
+      },
       {
         path: "new-apparel",
         loadChildren: () =>

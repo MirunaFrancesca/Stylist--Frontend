@@ -79,3 +79,25 @@ ion-alert {
     border-color: rgb(250, 185, 185);
   }
 }
+
+.success-alert {
+  --ion-background-color: rgb(234, 255, 209) !important;
+  --ion-text-color:rgb(0, 100, 45) !important;
+  .alert-head.sc-ion-alert-md+.alert-message.sc-ion-alert-md {
+    color: rgb(0, 100, 45) !important;
+  }
+}
+
+.error-alert {
+  --ion-background-color: rgb(247, 230, 230) !important;
+  --ion-text-color:rgb(190, 2, 2) !important;
+  .alert-head.sc-ion-alert-md+.alert-message.sc-ion-alert-md {
+    color: rgb(190, 2, 2) !important;
+  }
+}
+
+.confirmation-dialog {
+  .alert-head.sc-ion-alert-md+.alert-message.sc-ion-alert-md {
+    padding-bottom: 0;
+  }
+}

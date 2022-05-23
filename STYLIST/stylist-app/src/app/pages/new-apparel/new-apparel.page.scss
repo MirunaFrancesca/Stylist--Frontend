@@ -9,6 +9,13 @@ ion-title {
   font-family: DidonesqueStencilItalic;
 }
 
+.card-wrapper {
+  width: 380px;
+  margin-left: auto;
+  margin-right: auto;
+  display: block;
+}
+
 ion-card-title {
   justify-content: center;
   display: flex;

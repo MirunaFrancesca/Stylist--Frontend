@@ -19,8 +19,18 @@ const routes: Routes = [
     loadChildren: () => import('./security/register/register.module').then( m => m.RegisterPageModule)
   },
   {
-    path: 'new-apparel',
+    path: 'new-apparel/:id',
     loadChildren: () => import('./pages/new-apparel/new-apparel.module').then( m => m.NewApparelPageModule)
+  },
+  {
+    path: 'home',
+    loadChildren: () => import('./pages/home/home.module').then( m => m.HomePageModule),
+    //canActivate: [AuthGuard]
+  },
+  {
+    path: 'my-wardrobe',
+    loadChildren: () => import('./pages/my-wardrobe/my-wardrobe.module').then( m => m.MyWardrobePageModule),
+    //canActivate: [AuthGuard]
   },
   // {
   //   path: '',

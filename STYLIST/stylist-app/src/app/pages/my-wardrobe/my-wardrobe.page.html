@@ -11,30 +11,37 @@
     </ion-toolbar>
   </ion-header>
 
-  <ion-button shape="round" fill="outline" routerLink="/new-apparel">
+  <ion-button class="add-apparel-btn" shape="round" fill="outline" routerLink="/new-apparel">
     <ion-icon class="add-icon" name="add-circle"></ion-icon>
     New apparel
   </ion-button>
 
-  <ion-list>
-    <ion-item *ngFor="let apparel of apparels">
-      <div class="container">
-        <div class="clothing-item">
+  <ion-list *ngIf="isLoaded; else showLoader">
+    <ion-item *ngFor="let apparel of apparels" lines="none">
+      <div class="card-wrapper">
+        <div class="apparel-wrapper">
           <app-apparel [apparel]="apparel"></app-apparel>
         </div>
 
-        <div class="middle actions">
-          <div class="text edit">
+        <div class="middle action-container"> 
+          <ion-button class="action-btn edit" size="small" [routerLink]="['/new-apparel',apparel.id]">
             Edit
-            <ion-icon class="card-icon" name="brush"></ion-icon>
-          </div>
-          
-          <div class="text delete" (click)="deleteOutfit(apparel.id)">
+            <ion-icon slot="end" name="brush"></ion-icon>
+          </ion-button>
+
+          <ion-button class="action-btn delete" size="small" (click)="presentAlertConfirm(apparel.id)">
             Delete
-            <ion-icon class="card-icon" name="trash"></ion-icon>
-          </div>
+            <ion-icon slot="end" name="trash"></ion-icon>
+          </ion-button>
         </div>
       </div>
     </ion-item>
   </ion-list>
+
+  <ng-template #showLoader>
+    <div class="spin">
+      <ion-spinner name="bubbles"></ion-spinner>
+    </div>
+  </ng-template>
 </ion-content>
+

@@ -1,0 +1,62 @@
+ion-content {
+  --background: #131413;
+}
+
+ion-toolbar {
+  --background: transparent;
+}
+
+ion-buttons > ion-button {
+  font-family: DidonesqueStencilRoman;
+}
+
+ion-title {
+  color: white !important;
+  font-size: 40px;
+  text-align: center;
+  font-family: DidonesqueStencilItalic;
+  position: relative;
+  top: 50px;
+}
+
+.login {
+  padding: 50px 30px;
+  margin-top: 130px;
+
+  ion-item {
+    --background: #2d282d;
+    --color: white;
+    border-radius: 6px;
+    margin-bottom: 20px;
+    p {
+      opacity: 0.5;
+      font-size: 13px;
+    }
+  }
+
+  ion-button {
+    font-family: DidonesqueStencilRoman;
+  }
+
+  .login-btn {
+    border: 1px solid var(--ion-color-dark);
+    border-radius: 6px;
+    --background: var(--ion-color-primary);
+    --color: white;
+    font-size: large;
+  }
+
+  .login-valid {
+    --background: #f8e6e7;
+    --color: black;
+  }
+
+  p {
+    opacity: 0.8;
+    font-size: 14px;
+  }
+}
+
+ion-back-button {
+  --color: white !important;
+}

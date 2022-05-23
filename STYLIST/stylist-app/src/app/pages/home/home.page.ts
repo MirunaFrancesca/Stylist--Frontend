@@ -24,13 +24,19 @@ export class HomePage implements OnInit {
 
   fetchOutfit(): void {
     this.isLoaded= false;
-    this.apparelService.getRandomOufit()
-    .subscribe(res => {
+
+    this.apparelService.getRandomOufit().subscribe(res => {
       this.outfit = res.body;
+      if(this.outfit[0].bottom) {
+        let aux = this.outfit[0];
+        this.outfit[0] = this.outfit[1];
+        this.outfit[1] = aux; 
+      }
+
       console.log(this.outfit);
 
-      this.outfit.forEach(item =>{
-        this.apparelService.getApparelImage(item.id).subscribe(res =>{
+      this.outfit.forEach(item => {
+        this.apparelService.getApparelImage(item.id).subscribe(res => {
           const objectURL = URL.createObjectURL(res);
           item.imageUrl = objectURL;
         });

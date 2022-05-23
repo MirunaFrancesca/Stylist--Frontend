@@ -12,6 +12,5 @@ export class ApparelComponent implements OnInit {
   constructor() {}
 
   ngOnInit() {
-    console.log(this.apparel);
   }
 }

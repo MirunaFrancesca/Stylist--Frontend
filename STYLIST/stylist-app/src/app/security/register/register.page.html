@@ -1,9 +1,35 @@
-<ion-header>
+<ion-content fullscreen="true" scrollY="false">
   <ion-toolbar>
-    <ion-title>register</ion-title>
+    <ion-buttons slot="start">
+      <ion-back-button defaultHref="/login"></ion-back-button>
+    </ion-buttons>
   </ion-toolbar>
-</ion-header>
 
-<ion-content>
+  <ion-title>Create Account</ion-title>
 
+  <div class="login">
+    <ion-item lines="none">
+      <ion-input [(ngModel)]="firstName" placeholder="First Name"></ion-input>
+    </ion-item>
+
+    <ion-item lines="none">
+      <ion-input [(ngModel)]="lastName" placeholder="Last Name"></ion-input>
+    </ion-item>
+    
+    <ion-item lines="none">
+      <ion-input [(ngModel)]="username" placeholder="Username"></ion-input>
+    </ion-item>
+
+    <ion-item lines="none">
+      <ion-input [(ngModel)]="email" placeholder="Email"></ion-input>
+    </ion-item>
+
+    <ion-item lines="none">
+      <ion-input [(ngModel)]="pw" [type]="showPassword ? 'text' : 'password'" placeholder="Password"></ion-input>
+      <p class="pw-toggle" slot="end" (click)="showPassword = !showPassword"> {{ showPassword ? 'HIDE' : 'SHOW' }} </p>
+    </ion-item>
+
+    <ion-button expand="block" class="login-btn" [class.login-valid]="email != '' && pw != ''" (click)="register()">Sign Up</ion-button>
+
+  </div>
 </ion-content>

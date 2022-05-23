@@ -28,7 +28,6 @@ export class LoginPage implements OnInit {
   async login(){
       this.loginService.loginUser(this.username, this.pw).subscribe(
       async (response) => {
-        console.log("true");
         this.router.navigateByUrl('/my-wardrobe', {replaceUrl: true});
       },
       async (errorResponse) => {

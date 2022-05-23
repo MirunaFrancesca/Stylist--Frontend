@@ -16,4 +16,6 @@ export class Apparel {
   public mainColour: BasicColour;
   public image: FileImage;
   public imageUrl: any;
+  public bottom: boolean;
+  public onePiece: boolean;
 }
