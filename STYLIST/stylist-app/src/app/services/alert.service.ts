@@ -1,21 +1,21 @@
 import { Injectable } from '@angular/core';
-import { AlertController } from '@ionic/angular';
+import { ToastController } from '@ionic/angular';
 
 @Injectable({
   providedIn: 'root',
 })
 export class AlertService {
-    
-  constructor(public alertController: AlertController) {}
+  
+  constructor(public toastController: ToastController) {}
 
-  async presentAlert(cssClass, header: string, message: string) {
-    const alert = await this.alertController.create({
+  async presentToast(cssClass: string, message: string) {
+    const toast = await this.toastController.create({
       cssClass: cssClass,
-      header: header,
       message: message,
+      animated: true,
+      duration: 2000
     });
-
-    await alert.present();
+    toast.present();
   }
   
 }

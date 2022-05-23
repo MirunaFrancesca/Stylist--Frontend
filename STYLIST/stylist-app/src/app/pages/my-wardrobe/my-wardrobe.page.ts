@@ -33,6 +33,7 @@ export class MyWardrobePage implements OnInit {
 
   fetchData(): void {
     this.isLoaded = false;
+    
     this.apparelService.getAllApparels()
     .pipe(
       delay(500),
@@ -69,10 +70,10 @@ export class MyWardrobePage implements OnInit {
             this.apparelService.deleteApparel(id).subscribe(
              (res) => {
               this.apparels = this.apparels.filter(item => item.id != id);
-              this.alertService.presentAlert("success-alert", "Successful", "Item deleted successfully!");
+              this.alertService.presentToast("success-alert", "Item deleted successfully!");
              },
              (err) => {
-              this.alertService.presentAlert("error-alert", "Error", "Item could not be deleted!");
+              this.alertService.presentToast("error-alert", "Item could not be deleted!");
              });
           }
         }

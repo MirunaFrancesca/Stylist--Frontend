@@ -32,14 +32,9 @@ ion-title {
 
   .login-btn {
     border-radius: 6px;
-    --background: var(--ion-color-primary);
-    --color: white;
-    font-size: large;
-  }
-
-  .login-valid {
-    --background: #f8e6e7;
+    --background: var(--ion-color-secondary);
     --color: black;
+    font-size: large;
   }
 
   p {

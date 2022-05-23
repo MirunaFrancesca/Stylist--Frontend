@@ -4,14 +4,14 @@
   </ion-toolbar>
 </ion-header>
 
-<ion-content [fullscreen]="true">
+<ion-content *ngIf="isLoaded; else showLoader" [fullscreen]="true">
   <ion-header collapse="condense">
     <ion-toolbar>
       <ion-title size="large">OOTD</ion-title>
     </ion-toolbar>
   </ion-header>
 
-  <ion-row>
+  <ion-row *ngIf="outfit.length == 2" class="two-piece-wrapper">
     <ion-col>
       <ion-img class="manequin-img" [src]="manequinImg"></ion-img>
     </ion-col>
@@ -23,8 +23,7 @@
         </ion-card-header>
 
         <ion-card-content>
-          <ion-img *ngIf="!isLoaded" [src]="apparelDefaultImage" alt="photo"></ion-img>
-          <ion-img *ngIf="isLoaded" [src]="outfit[0].imageUrl"></ion-img>
+          <ion-img class="apparel-img" [src]="outfit[0].imageUrl"></ion-img>
         </ion-card-content>
       </ion-card>
 
@@ -36,13 +35,65 @@
         </ion-card-header>
 
         <ion-card-content>
-          <ion-img *ngIf="!isLoaded" [src]="apparelDefaultImage" alt="photo"></ion-img>
-          <ion-img *ngIf="isLoaded" [src]="outfit[1].imageUrl"></ion-img>
+          <ion-img class="apparel-img" [src]="outfit[1].imageUrl"></ion-img>
         </ion-card-content>
       </ion-card>
     </ion-col>
   </ion-row>
 
-  <ion-button expand="full" color="primary" (click)="fetchOutfit()">New Outfit</ion-button>
+  <ion-row *ngIf="outfit.length == 1" class="one-piece-wrapper">
+    <ion-card>
+      <ion-card-header>
+        <ion-card-title>One Piece</ion-card-title>
+      </ion-card-header>
 
+      <ion-card-content>
+        <ion-img class="apparel-img" [src]="outfit[0].imageUrl"></ion-img>
+      </ion-card-content>
+    </ion-card>
+
+    <ion-img class="manequin-img" [src]="manequinImg"></ion-img>
+  </ion-row>
+
+  <ion-button *ngIf="outfit.length > 0" class="refresh-btn-wrapper" expand="full" color="secondary" position="bottom" (click)="fetchOutfit()">New Outfit</ion-button>
+
+  <h1 *ngIf="outfit.length == 0" class="no-outfits">You have no outfits yet</h1>
+
+  <ion-row *ngIf="outfit.length == 0" class="two-piece-wrapper">
+    
+    <ion-col>
+      <ion-img class="manequin-img" [src]="manequinImg"></ion-img>
+    </ion-col>
+
+    <ion-col>
+      <ion-card>
+        <ion-card-header>
+          <ion-card-title>Top</ion-card-title>
+        </ion-card-header>
+
+        <ion-card-content>
+          <ion-img class="apparel-img" [src]="apparelDefaultImage"></ion-img>
+        </ion-card-content>
+      </ion-card>
+
+      <ion-img [src]="plusIcon"></ion-img>
+
+      <ion-card>
+        <ion-card-header>
+          <ion-card-title>Bottom</ion-card-title>
+        </ion-card-header>
+
+        <ion-card-content>
+          <ion-img class="apparel-img" [src]="apparelDefaultImage"></ion-img>
+        </ion-card-content>
+      </ion-card>
+    </ion-col>
+    <!-- <p>Please add more clothes to generate outfits</p> -->
+  </ion-row>
 </ion-content>
+
+<ng-template #showLoader>
+  <div class="spin">
+    <ion-spinner name="bubbles"></ion-spinner>
+  </div>
+</ng-template>

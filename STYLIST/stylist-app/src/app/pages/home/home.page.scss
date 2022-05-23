@@ -13,16 +13,31 @@ ion-title {
   font-family: DidonesqueStencilItalic;
 }
 
-.manequin-img {
-  width: 280%;
+.no-outfits {
+  display: flex;
+  justify-content: center;
+  font-size: 20px;
 }
 
-ion-card {
-  width: 180px;
+ion-card-title {
+  justify-content: center;
+  display: flex;
 }
 
-ion-row {
-  margin-top: 40px;
+.two-piece-wrapper {
+  .manequin-img {
+    width: 280%;
+  }
+
+  ion-card {
+    width: 180px;
+  }
+
+  .apparel-img {
+    width: 150px;
+    height: 222px;
+    object-fit: contain;
+  }
 }
 
 ion-col {
@@ -32,10 +47,31 @@ ion-col {
   justify-content: center;
 }
 
-.refresh-btn-wrapper {
+.one-piece-wrapper {
   display: flex;
-  justify-content: center;
+  flex-direction: column;
   align-items: center;
-  margin-top: 10px;
-  margin-bottom: 10px;
+
+  .manequin-img {
+    width: 150px;
+  }
+
+  ion-card {
+    margin-left: auto;
+    margin-right: auto;
+    display: block;
+  }
+
+  .apparel-img {
+    width: 330px;
+    height: 400px;
+    object-fit: contain;
+  }
+}
+
+.refresh-btn-wrapper {
+  position: fixed;
+  left: 0;
+  bottom: 0px;
+  right: 0;
 }

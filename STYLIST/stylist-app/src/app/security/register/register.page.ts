@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { AlertController } from '@ionic/angular';
+import { AlertService } from 'src/app/services/alert.service';
 import { AuthService } from '../auth.service';
 import { User } from '../model/user';
 
@@ -10,40 +12,51 @@ import { User } from '../model/user';
   styleUrls: ['./register.page.scss'],
 })
 export class RegisterPage implements OnInit {
-  public firstName: string;
-  public lastName: string;
-  public username: string;
-  public email: string;
-  public pw: string;
+  showPassword = false;
+  public registerForm: FormGroup;
 
   constructor(
     private authService: AuthService,
     private router: Router,
-    private alertController: AlertController
-    ) { }
+    public alertService: AlertService,
+    public formBuilder: FormBuilder
+  ) {}
 
   ngOnInit() {
+    this.registerForm = this.formBuilder.group({
+      firstName: ['', [Validators.required]],
+      lastName: ['', [Validators.required]],
+      username: ['', [Validators.required]],
+      email: ['', [Validators.required]],
+      password: ['', [Validators.required]],
+    });
   }
 
   async register() {
+    if (!this.registerForm.valid) return false;
+
     const newUser: User = {
-      firstName: this.firstName,
-      lastName: this.lastName,
-      username: this.username,
-      email: this.email,
-      password: this.pw
+      firstName: this.registerForm.value.firstName,
+      lastName: this.registerForm.value.lastName,
+      email: this.registerForm.value.email,
+      username: this.registerForm.value.username,
+      password: this.registerForm.value.password,
     };
 
     this.authService.registerUser(newUser).subscribe(
       async (response) => {
-        this.router.navigateByUrl('/login', {replaceUrl: true});
+        this.alertService.presentToast(
+          'success-alert',
+          'Account created successfully!'
+        );
+        this.router.navigateByUrl('/login', { replaceUrl: true });
       },
       async (errorResponse) => {
-        const alert = await this.alertController.create({
-          header: 'Register failed',
-          message: errorResponse.error.error,
-          buttons: ['OK'],
-        });
+        console.log(errorResponse);
+        this.alertService.presentToast(
+          'error-alert',
+          'Could not create account!'
+        );
       }
     );
   }

@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { AlertController } from '@ionic/angular';
+import { AlertService } from 'src/app/services/alert.service';
 import { AuthService } from '../auth.service';
 
 @Component({
@@ -10,33 +12,49 @@ import { AuthService } from '../auth.service';
 })
 export class LoginPage implements OnInit {
   showPassword = false;
-  username = '';
-  pw = '';
+  public loginForm: FormGroup;
 
   constructor(
     private router: Router,
-    private loginService: AuthService,
-    private alertController: AlertController
+    private authService: AuthService,
+    public alertService: AlertService,
+    public formBuilder: FormBuilder
   ) {}
 
-  ngOnInit() {}
-
-  goToRegister(): void{
-    this.router.navigateByUrl('/register').then(r => console.log('navigated'));
+  ngOnInit(): void {
+    this.loginForm = this.formBuilder.group({
+      username: ['', [Validators.required]],
+      password: ['', [Validators.required]],
+    });
   }
 
-  async login(){
-      this.loginService.loginUser(this.username, this.pw).subscribe(
-      async (response) => {
-        this.router.navigateByUrl('/my-wardrobe', {replaceUrl: true});
-      },
-      async (errorResponse) => {
-        const alert = await this.alertController.create({
-          header: 'Login failed',
-          message: errorResponse.error.error,
-          buttons: ['OK'],
-        });
-      }
-    );
+  public get loginFormControl() {
+    return this.loginForm.controls;
+  }
+
+  goToRegister(): void {
+    this.router
+      .navigateByUrl('/register')
+      .then((r) => console.log('navigated'));
+  }
+
+  async login() {
+    if (!this.loginForm.valid) return false;
+
+    this.authService
+      .loginUser(this.loginForm.value.username, this.loginForm.value.password)
+      .subscribe(
+        async (response) => {
+          this.alertService.presentToast(
+            'success-alert',
+            'Logged in successfully!'
+          );
+          this.router.navigateByUrl('/my-wardrobe', { replaceUrl: true });
+        },
+        async (errorResponse) => {
+          console.log(errorResponse);
+          this.alertService.presentToast('error-alert', 'Wrong credentials!');
+        }
+      );
   }
 }

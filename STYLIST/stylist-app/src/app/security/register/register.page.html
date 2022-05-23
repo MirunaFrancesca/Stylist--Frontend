@@ -8,28 +8,29 @@
   <ion-title>Create Account</ion-title>
 
   <div class="login">
-    <ion-item lines="none">
-      <ion-input [(ngModel)]="firstName" placeholder="First Name"></ion-input>
-    </ion-item>
+    <form [formGroup]="registerForm" (ngSubmit)="register()" novalidate vertical="bottom">
+      <ion-item lines="none">
+        <ion-input formControlName="firstName" placeholder="First Name"></ion-input>
+      </ion-item>
 
-    <ion-item lines="none">
-      <ion-input [(ngModel)]="lastName" placeholder="Last Name"></ion-input>
-    </ion-item>
-    
-    <ion-item lines="none">
-      <ion-input [(ngModel)]="username" placeholder="Username"></ion-input>
-    </ion-item>
+      <ion-item lines="none">
+        <ion-input formControlName="lastName" placeholder="Last Name"></ion-input>
+      </ion-item>
+      
+      <ion-item lines="none">
+        <ion-input formControlName="username" placeholder="Username"></ion-input>
+      </ion-item>
 
-    <ion-item lines="none">
-      <ion-input [(ngModel)]="email" placeholder="Email"></ion-input>
-    </ion-item>
+      <ion-item lines="none">
+        <ion-input formControlName="email" placeholder="Email"></ion-input>
+      </ion-item>
 
-    <ion-item lines="none">
-      <ion-input [(ngModel)]="pw" [type]="showPassword ? 'text' : 'password'" placeholder="Password"></ion-input>
-      <p class="pw-toggle" slot="end" (click)="showPassword = !showPassword"> {{ showPassword ? 'HIDE' : 'SHOW' }} </p>
-    </ion-item>
+      <ion-item lines="none">
+        <ion-input formControlName="password" [type]="showPassword ? 'text' : 'password'" placeholder="Password"></ion-input>
+        <p class="pw-toggle" slot="end" (click)="showPassword = !showPassword"> {{ showPassword ? 'HIDE' : 'SHOW' }} </p>
+      </ion-item>
 
-    <ion-button expand="block" class="login-btn" [class.login-valid]="email != '' && pw != ''" (click)="register()">Sign Up</ion-button>
-
+      <ion-button type="submit" expand="block" class="login-btn" [disabled]="!registerForm.valid">Create Account</ion-button>
+    </form>
   </div>
 </ion-content>
