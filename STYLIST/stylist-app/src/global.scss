@@ -57,7 +57,9 @@
 
 h1,
 h2,
-h3 {
+h3,
+h4,
+h5 {
   font-size: 32px;
   font-weight: 500;
   font-family: DidonesqueStencilItalic;
@@ -96,7 +98,7 @@ ion-alert {
   }
 }
 
-.spin{
+.spin {
   position: fixed;
   top: 50%;
   left: 50%;
@@ -105,4 +107,15 @@ ion-alert {
   ion-spinner {
     transform: scale(3);
   }
+}
+
+.empty-container{
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  -ms-transform: translate(-50%, -50%);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }

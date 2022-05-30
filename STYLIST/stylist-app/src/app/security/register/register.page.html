@@ -11,26 +11,38 @@
     <form [formGroup]="registerForm" (ngSubmit)="register()" novalidate vertical="bottom">
       <ion-item lines="none">
         <ion-input formControlName="firstName" placeholder="First Name"></ion-input>
+        <ion-note *ngIf="isSubmitted && registerFormControls.firstName.errors?.required" slot="error">First Name is required</ion-note>
       </ion-item>
 
       <ion-item lines="none">
         <ion-input formControlName="lastName" placeholder="Last Name"></ion-input>
+        <ion-note *ngIf="isSubmitted && registerFormControls.lastName.errors?.required" slot="error">Last Name is required</ion-note>
       </ion-item>
       
       <ion-item lines="none">
         <ion-input formControlName="username" placeholder="Username"></ion-input>
+        <ion-note *ngIf="isSubmitted && registerFormControls.username.errors?.required" slot="error">Username is required</ion-note>
       </ion-item>
 
       <ion-item lines="none">
         <ion-input formControlName="email" placeholder="Email"></ion-input>
+        <ion-note *ngIf="isSubmitted && registerFormControls.email.errors?.required" slot="error">Email is required</ion-note>
       </ion-item>
 
       <ion-item lines="none">
         <ion-input formControlName="password" [type]="showPassword ? 'text' : 'password'" placeholder="Password"></ion-input>
         <p class="pw-toggle" slot="end" (click)="showPassword = !showPassword"> {{ showPassword ? 'HIDE' : 'SHOW' }} </p>
+        <ion-note *ngIf="isSubmitted && registerFormControls.password.errors?.required" slot="error">Password is required</ion-note>
       </ion-item>
 
-      <ion-button type="submit" expand="block" class="login-btn" [disabled]="!registerForm.valid">Create Account</ion-button>
+      <ion-item lines="none">
+        <ion-input formControlName="confirmPassword" [type]="showPassword ? 'text' : 'password'" placeholder="Confirm Password"></ion-input>
+        <p class="pw-toggle" slot="end" (click)="showPassword = !showPassword"> {{ showPassword ? 'HIDE' : 'SHOW' }} </p>
+        <ion-note *ngIf="isSubmitted && registerFormControls.confirmPassword.errors?.required" slot="error">Confirm Password is required</ion-note>
+        <ion-note *ngIf="isSubmitted && passwordAndConfirmMatch()" slot="error">Confirmation and password do not match</ion-note>
+      </ion-item>
+
+      <ion-button type="submit" expand="block" class="login-btn">Create Account</ion-button>
     </form>
   </div>
 </ion-content>

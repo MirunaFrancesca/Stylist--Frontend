@@ -4,11 +4,12 @@ import { Camera, CameraResultType, CameraSource } from '@capacitor/camera';
 import { decode } from 'base64-arraybuffer';
 import { HttpEventType, HttpResponse } from '@angular/common/http';
 import { ApparelService } from 'src/app/services/apparel.service';
-import { myColours } from './colours.model';
+import { myColours } from '../../model/colours.model';
 import { BehaviorSubject } from 'rxjs';
 import { AlertController } from '@ionic/angular';
 import { ActivatedRoute, Router } from '@angular/router';
 import { AlertService } from 'src/app/services/alert.service';
+import { myTypes } from 'src/app/model/types.model';
 
 @Component({
   selector: 'app-new-apparel',
@@ -26,20 +27,7 @@ export class NewApparelPage implements OnInit {
   public isUploaded: boolean = false;
   private imageSourceChanged = new BehaviorSubject<any>(null);
 
-  public types = [
-    'T-shirt',
-    'Top',
-    'Shirt',
-    'Blouse',
-    'Body',
-    'Pullover',
-    'Trousers',
-    'Shorts',
-    'Skirt',
-    'Dungarees',
-    'Dress',
-    'Overall',
-  ];
+  public types = myTypes;
   public colours = myColours;
 
   constructor(

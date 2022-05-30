@@ -1,9 +1,12 @@
 import { Component, OnInit } from '@angular/core';
-import { AlertController } from '@ionic/angular';
+import { AlertController, ModalController } from '@ionic/angular';
 import { delay, finalize } from 'rxjs/operators';
-import { Apparel } from 'src/app/components/apparel/apparel';
+import { Apparel } from 'src/app/model/apparel';
+import { FiltersModalComponent } from 'src/app/components/filters-modal/filters-modal.component';
 import { AlertService } from 'src/app/services/alert.service';
 import { ApparelService } from 'src/app/services/apparel.service';
+import { myTypes } from 'src/app/model/types.model';
+import { myColours } from 'src/app/model/colours.model';
 
 @Component({
   selector: 'app-my-wardrobe',
@@ -11,13 +14,17 @@ import { ApparelService } from 'src/app/services/apparel.service';
   styleUrls: ['./my-wardrobe.page.scss'],
 })
 export class MyWardrobePage implements OnInit {
+  public iconHanger = "../../../assets/icon/hanger.png";
   isLoaded: boolean = false;
   apparels: Array<Apparel> = [];
+  types: string[] = myTypes;
+  colours: string[] = myColours;
 
   constructor(
     private apparelService: ApparelService,
     public alertService: AlertService,
-    public alertController: AlertController
+    public alertController: AlertController,
+    private modalController: ModalController
   ) {}
 
   ngOnInit(): void {
@@ -81,6 +88,27 @@ export class MyWardrobePage implements OnInit {
     });
 
     await alert.present();
+  }
+
+  async openFiltersModal() {
+    const modal = await this.modalController.create({
+      component: FiltersModalComponent,
+      breakpoints: [0, 0.5, 0.7, 1],
+      initialBreakpoint: 0.5,
+      handle: true,
+      componentProps: {
+        types: this.types,
+        colours: this.colours
+      }
+    });
+
+    await modal.present();
+
+    const {data} = await modal.onWillDismiss();
+
+    if (data) {
+      //this.filterProducts(ProductsPage.categoryMapper(data.category));
+    }
   }
 
 }

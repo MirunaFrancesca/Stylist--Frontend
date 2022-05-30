@@ -32,6 +32,11 @@ const routes: Routes = [
     loadChildren: () => import('./pages/my-wardrobe/my-wardrobe.module').then( m => m.MyWardrobePageModule),
     //canActivate: [AuthGuard]
   },
+  {
+    path: 'saved-outfits',
+    loadChildren: () => import('./pages/saved-outfits/saved-outfits.module').then( m => m.SavedOutfitsPageModule),
+    //canActivate: [AuthGuard]
+  },
   // {
   //   path: '',
   //   redirectTo: 'login',

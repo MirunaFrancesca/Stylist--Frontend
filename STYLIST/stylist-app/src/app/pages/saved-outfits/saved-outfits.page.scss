@@ -1,0 +1,104 @@
+ion-content {
+  --ion-background-color: black !important;
+}
+
+.empty-container {
+  p {
+    font-size: 16px;
+    position: relative;
+    bottom: 20px;
+  }
+}
+
+.manequin-img {
+  width: 120px;
+}
+
+ion-slides {
+  height: 100%;
+}
+
+.first-word-wrapper {
+  display: flex;
+  flex-direction: row;
+  align-items: baseline;
+  justify-content: flex-end;
+}
+
+.title-wrapper {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+}
+
+.outfit-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+h1 {
+  font-size: 250px;
+  color: white !important;
+  position: relative;
+  left: 80px;
+}
+
+h2 {
+  font-size: 130px !important;
+  color: white !important;
+  position: relative;
+  left: 40px;
+}
+
+h3 {
+  font-size: 80px !important;
+  color: white !important;
+  position: relative;
+  left: 70px;
+  bottom: 80px;
+}
+
+h4 {
+  font-size: 50px !important;
+  color: white !important;
+  position: relative;
+  bottom: 100px;
+  left: 110px;
+}
+
+h5 {
+  font-size: 20px !important;
+  color: white !important;
+}
+
+.top-img {
+  width: 330px;
+  height: 330px;
+  object-fit: contain;
+}
+
+.plus-img {
+  width: 30px !important;
+}
+
+.bottom-img {
+  width: 330px;
+  height: 330px;
+  object-fit: contain;
+}
+
+.apparel-container {
+  background-color: white !important;
+  width: 330px;
+  height: 330px;
+}
+
+.first-container {
+  margin-bottom: 20px;
+}
+
+.manequin-last-page {
+  border-radius: 50%;
+}
+

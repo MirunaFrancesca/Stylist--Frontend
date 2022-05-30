@@ -19,6 +19,11 @@ const routes: Routes = [
         import("../my-wardrobe/my-wardrobe.module").then((m) => m.MyWardrobePageModule),
       },
       {
+        path: "saved-outfits",
+        loadChildren: () =>
+        import("../saved-outfits/saved-outfits.module").then((m) => m.SavedOutfitsPageModule)
+      },
+      {
         path: "new-apparel/:id",
         loadChildren: () =>
         import("../new-apparel/new-apparel.module").then((m) => m.NewApparelPageModule)

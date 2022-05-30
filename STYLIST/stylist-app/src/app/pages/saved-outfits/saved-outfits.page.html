@@ -1,0 +1,51 @@
+<ion-content *ngIf="isLoaded  && viewEntered; else showLoader">
+  <ion-slides *ngIf="outfits.length > 0; else noSavedOutfits" pager="true" [options]="slideOpts">
+    <ion-slide [ngStyle]="{'background-color': 'black'}">
+      <div class="title-wrapper">
+        <div class="first-word-wrapper ">
+          <h1>F</h1>
+          <h2>av</h2>
+        </div>
+  
+        <h3>-ourite</h3>
+        <h4>outfits</h4>
+        <h5>Swipe right to see</h5>
+      </div>
+    </ion-slide>
+
+    <ion-slide *ngFor="let outfit of outfits">
+      <div class="outfit-container">
+        <div class="apparel-container first-container">
+          <ion-img class="top-img" [src]="outfit[0].imageUrl"></ion-img>
+        </div>
+        
+        <div class="apparel-container">
+          <ion-img class="bottom-img" [src]="outfit[1].imageUrl"></ion-img>
+        </div>
+      </div>
+    </ion-slide>
+
+    <ion-slide>
+      <div class="empty-container">
+        <img class="manequin-img manequin-last-page" [src]="manequinImg">
+        <h5>No more outfits</h5>
+      </div>
+    </ion-slide>
+  </ion-slides>
+
+  <ng-template #noSavedOutfits>
+    <div class="empty-container">
+      <img class="manequin-img manequin-last-page" [src]="manequinImg">
+      <h5>No favourite outfits</h5>
+    </div>
+  </ng-template>
+</ion-content>
+
+<ng-template #showLoader>
+  <ion-content>
+    <div class="spin">
+      <ion-spinner name="bubbles"></ion-spinner>
+    </div>
+  </ion-content>
+</ng-template>
+

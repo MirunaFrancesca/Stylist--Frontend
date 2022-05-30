@@ -1,7 +1,7 @@
 import { HttpClient, HttpHeaders, HttpRequest, HttpResponse } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { BehaviorSubject, Observable } from 'rxjs';
-import { Apparel } from '../components/apparel/apparel';
+import { Apparel } from '../model/apparel';
 
 @Injectable({
   providedIn: 'root',
@@ -61,7 +61,7 @@ export class ApparelService {
   }
 
   getApparelImage(id: number): Observable<any>{
-    return this.httpClient.get(`${this.apiUrl}/get-file/${id}`, {withCredentials: true, responseType: 'blob'});
+    return this.httpClient.get(`${this.apiUrl}/get-file/${id}`, { withCredentials: true, responseType: 'blob'});
   }
 
   getAllApparels(): Observable<HttpResponse<Apparel[]>> {      
@@ -78,6 +78,38 @@ export class ApparelService {
 
   getWardrobeRefresh(): Observable<boolean> {
     return this.wardrobeNeedsRefresh.asObservable();
+  }
+
+  getSavedOutfits(): Observable<any> {
+    return this.httpClient.get(this.apiUrl + '/get-saved-outfits', { observe:'response', withCredentials: true });  
+  }
+
+  saveOutfit(firstId: number, secondId: number): Observable<any> {
+    const formData: FormData = new FormData();
+    formData.append('idFirst', firstId.toString()); 
+    formData.append('idSecond', secondId.toString());
+
+    let req = new HttpRequest('POST', `${this.apiUrl}/save-outfit`, formData, {
+      reportProgress: true,
+      responseType: 'text',
+      withCredentials: true
+    });
+
+    return this.httpClient.request(req);
+  }
+
+  deleteOutfit(firstId: number, secondId: number): Observable<any> {
+    const formData: FormData = new FormData();
+    formData.append('idFirst', firstId.toString()); 
+    formData.append('idSecond', secondId.toString());
+
+    let req = new HttpRequest('PUT', `${this.apiUrl}/delete-saved-outfit`, formData, {
+      reportProgress: true,
+      responseType: 'text',
+      withCredentials: true
+    });
+
+    return this.httpClient.request(req);
   }
 
 }

@@ -4,7 +4,7 @@
   </ion-toolbar>
 </ion-header>
 
-<ion-content [fullscreen]="true">
+<ion-content *ngIf="isLoaded; else showLoader" [fullscreen]="true">
   <ion-header collapse="condense">
     <ion-toolbar>
       <ion-title size="large">Your wardrobe</ion-title>
@@ -16,7 +16,7 @@
     New apparel
   </ion-button>
 
-  <ion-list *ngIf="isLoaded; else showLoader">
+  <ion-list *ngIf="apparels.length > 0; else emptyWardrobe">
     <ion-item *ngFor="let apparel of apparels" lines="none">
       <div class="card-wrapper">
         <div class="apparel-wrapper">
@@ -38,10 +38,23 @@
     </ion-item>
   </ion-list>
 
-  <ng-template #showLoader>
-    <div class="spin">
-      <ion-spinner name="bubbles"></ion-spinner>
+  <ng-template #emptyWardrobe>
+    <div class="empty-container">
+      <ion-img class="hanger-img" [src]="iconHanger"></ion-img>
+      <p>No clothes yet</p>
     </div>
   </ng-template>
+
+  <ion-fab vertical="bottom" horizontal="end" slot="fixed" class="ion-hide-md-up">
+    <ion-fab-button (click)="openFiltersModal()">
+      <ion-icon name="filter"></ion-icon>
+    </ion-fab-button>
+  </ion-fab>
 </ion-content>
+
+<ng-template #showLoader>
+  <div class="spin">
+    <ion-spinner name="bubbles"></ion-spinner>
+  </div>
+</ng-template>
 

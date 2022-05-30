@@ -14,6 +14,8 @@
   <ion-row *ngIf="outfit.length == 2" class="two-piece-wrapper">
     <ion-col>
       <ion-img class="manequin-img" [src]="manequinImg"></ion-img>
+      <img *ngIf="!isSaved" class="heart-img" [src]="emptyHeartSvg" (click)="addToFavourites()"/>
+      <img *ngIf="isSaved" class="heart-img" [src]="fillHeartSvg" (click)="removeFromFavourites()"/>
     </ion-col>
 
     <ion-col>
@@ -57,39 +59,13 @@
 
   <ion-button *ngIf="outfit.length > 0" class="refresh-btn-wrapper" expand="full" color="secondary" position="bottom" (click)="fetchOutfit()">New Outfit</ion-button>
 
-  <h1 *ngIf="outfit.length == 0" class="no-outfits">You have no outfits yet</h1>
-
-  <ion-row *ngIf="outfit.length == 0" class="two-piece-wrapper">
-    
-    <ion-col>
+  <ion-row *ngIf="outfit.length == 0">
+    <div class="empty-container">
       <ion-img class="manequin-img" [src]="manequinImg"></ion-img>
-    </ion-col>
-
-    <ion-col>
-      <ion-card>
-        <ion-card-header>
-          <ion-card-title>Top</ion-card-title>
-        </ion-card-header>
-
-        <ion-card-content>
-          <ion-img class="apparel-img" [src]="apparelDefaultImage"></ion-img>
-        </ion-card-content>
-      </ion-card>
-
-      <ion-img [src]="plusIcon"></ion-img>
-
-      <ion-card>
-        <ion-card-header>
-          <ion-card-title>Bottom</ion-card-title>
-        </ion-card-header>
-
-        <ion-card-content>
-          <ion-img class="apparel-img" [src]="apparelDefaultImage"></ion-img>
-        </ion-card-content>
-      </ion-card>
-    </ion-col>
-    <!-- <p>Please add more clothes to generate outfits</p> -->
+      <p>No outfits yet</p>
+    </div>
   </ion-row>
+
 </ion-content>
 
 <ng-template #showLoader>

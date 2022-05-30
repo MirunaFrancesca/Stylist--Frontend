@@ -1,5 +1,5 @@
 import { Component, Input, OnInit } from '@angular/core';
-import { Apparel } from './apparel';
+import { Apparel } from '../../model/apparel';
 
 @Component({
   selector: 'app-apparel',

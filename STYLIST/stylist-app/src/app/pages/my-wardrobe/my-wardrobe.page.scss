@@ -71,11 +71,16 @@ ion-list {
 .edit {
   --background: var(--ion-color-secondary);
   --color: black;
+  --border-color:var(--ion-color-secondary) !important;
 }
 
 .delete {
   --background: var(--ion-color-primary);
   --color: white;
+}
+
+.hanger-img {
+  width: 50px;
 }
 
 

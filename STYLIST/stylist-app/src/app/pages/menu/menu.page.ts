@@ -18,12 +18,17 @@ export class MenuPage implements OnInit {
       path: "/"
     },
     {
-      title: "Clothes",
+      title: "Favourites",
+      icon: "list",
+      path: "/saved-outfits"
+    },
+    {
+      title: "Your Wardrobe",
       icon: "list",
       path: "/my-wardrobe"
     },
     {
-      title: "New apparel",
+      title: "New Apparel",
       icon: "",
       path: "/new-apparel"
     }

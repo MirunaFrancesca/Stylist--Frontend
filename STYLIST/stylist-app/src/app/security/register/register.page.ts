@@ -1,7 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
-import { AlertController } from '@ionic/angular';
 import { AlertService } from 'src/app/services/alert.service';
 import { AuthService } from '../auth.service';
 import { User } from '../model/user';
@@ -13,6 +12,7 @@ import { User } from '../model/user';
 })
 export class RegisterPage implements OnInit {
   showPassword = false;
+  isSubmitted = false;
   public registerForm: FormGroup;
 
   constructor(
@@ -28,11 +28,21 @@ export class RegisterPage implements OnInit {
       lastName: ['', [Validators.required]],
       username: ['', [Validators.required]],
       email: ['', [Validators.required]],
-      password: ['', [Validators.required]],
+      password: ['', [Validators.required, Validators.minLength(6)]],
+      confirmPassword: ['', [Validators.required]]
     });
   }
 
+  public get registerFormControls() {
+    return this.registerForm.controls;
+  }
+
+  public passwordAndConfirmMatch(): boolean{
+    return this.registerForm.value.password === this.registerForm.value.confirmPassword;
+  }
+
   async register() {
+    this.isSubmitted = true;
     if (!this.registerForm.valid) return false;
 
     const newUser: User = {

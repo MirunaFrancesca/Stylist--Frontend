@@ -1,5 +1,3 @@
-import { BasicColour } from 'src/app/components/apparel/apparel';
-
 export const myColours: string[] = [
       'black',
       'white',
