@@ -7,6 +7,8 @@ ion-title {
   font-size: x-large;
   text-align: center;
   font-family: DidonesqueStencilItalic;
+  position: relative;
+  right: 23px;
 }
 
 .card-wrapper {
@@ -19,4 +21,8 @@ ion-title {
 ion-card-title {
   justify-content: center;
   display: flex;
+}
+
+ion-back-button {
+  --color: white !important;
 }

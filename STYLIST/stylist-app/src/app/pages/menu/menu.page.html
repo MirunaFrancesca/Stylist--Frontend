@@ -16,14 +16,19 @@
         routerLinkActive="active-item"
         [routerLinkActiveOptions]="{exact: true}"
         >  
-          <ion-icon *ngIf="item.icon==''" [src]=iconHanger slot="start"></ion-icon>
-          <ion-icon *ngIf="item.icon!=''" [name]="item.icon" slot="start"></ion-icon>
+          <ion-icon class="icon-colour" *ngIf="item.path=='/new-apparel'" [src]=iconHanger slot="start"></ion-icon>
+          <ion-icon class="icon-colour" *ngIf="item.path=='/saved-outfits'" [src]=iconHeart slot="start"></ion-icon>
+          <ion-icon class="icon-colour" *ngIf="item.path=='/my-wardrobe'" [src]=iconList slot="start"></ion-icon>
+          <ion-icon style="fill: white;" *ngIf="item.icon!=''" [name]="item.icon" slot="start"></ion-icon>
           {{ item.title }}
         </ion-item>
       </ion-menu-toggle>
     </div>
 
-    <ion-button class="logout-btn" (click)="logout()">Logout</ion-button>  
+    <ion-button class="logout-btn" (click)="logout()">
+      <ion-icon class="exit-icon" name="exit-outline" ></ion-icon>
+      Logout
+    </ion-button>  
   </ion-content>
 </ion-menu>
 

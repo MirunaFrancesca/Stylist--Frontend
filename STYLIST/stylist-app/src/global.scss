@@ -119,3 +119,9 @@ ion-alert {
   flex-direction: column;
   align-items: center;
 }
+
+.menu-icon {
+  .ionicon {
+    stroke: white !important;
+  }
+}

@@ -39,7 +39,7 @@
         <ion-input formControlName="confirmPassword" [type]="showPassword ? 'text' : 'password'" placeholder="Confirm Password"></ion-input>
         <p class="pw-toggle" slot="end" (click)="showPassword = !showPassword"> {{ showPassword ? 'HIDE' : 'SHOW' }} </p>
         <ion-note *ngIf="isSubmitted && registerFormControls.confirmPassword.errors?.required" slot="error">Confirm Password is required</ion-note>
-        <ion-note *ngIf="isSubmitted && passwordAndConfirmMatch()" slot="error">Confirmation and password do not match</ion-note>
+        <ion-note *ngIf="isSubmitted && password.length > 0 && passwordAndConfirmMatch()" slot="error">Confirmation and password do not match</ion-note>
       </ion-item>
 
       <ion-button type="submit" expand="block" class="login-btn">Create Account</ion-button>

@@ -11,6 +11,7 @@ import { AuthService } from '../auth.service';
   styleUrls: ['./login.page.scss'],
 })
 export class LoginPage implements OnInit {
+  isSubmitted = false;
   showPassword = false;
   public loginForm: FormGroup;
 
@@ -28,7 +29,7 @@ export class LoginPage implements OnInit {
     });
   }
 
-  public get loginFormControl() {
+  public get loginFormControls() {
     return this.loginForm.controls;
   }
 
@@ -39,6 +40,7 @@ export class LoginPage implements OnInit {
   }
 
   async login() {
+    this.isSubmitted = true;
     if (!this.loginForm.valid) return false;
 
     this.authService

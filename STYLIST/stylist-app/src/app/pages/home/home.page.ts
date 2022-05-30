@@ -13,7 +13,7 @@ import { ApparelService } from 'src/app/services/apparel.service';
 export class HomePage implements OnInit {
   manequinImg = "../../../assets/icon/manequin.jpg";
   emptyHeartSvg = "../../../assets/icon/empty-heart.svg";
-  fillHeartSvg = "../../../assets/icon/fill-heart.svg"
+  fillHeartSvg = "../../../assets/icon/fill-heart-save.svg"
   apparelDefaultImage = "../../../assets/icon/apparel-default-image.png";
   plusIcon = "../../../assets/icon/plusIcon.png";
 

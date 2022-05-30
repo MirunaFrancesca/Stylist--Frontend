@@ -10,6 +10,8 @@ import { AuthService } from 'src/app/security/auth.service';
 })
 export class MenuPage implements OnInit {
   public iconHanger = "../../../assets/icon/hanger.svg";
+  public iconHeart = "../../../assets/icon/fill-heart.svg";
+  public iconList = "../../../assets/icon/list-outline.svg";
 
   menuItems = [
     {
@@ -18,20 +20,20 @@ export class MenuPage implements OnInit {
       path: "/"
     },
     {
-      title: "Favourites",
-      icon: "list",
-      path: "/saved-outfits"
-    },
-    {
       title: "Your Wardrobe",
-      icon: "list",
+      icon: "",
       path: "/my-wardrobe"
     },
     {
       title: "New Apparel",
       icon: "",
       path: "/new-apparel"
-    }
+    },
+    {
+      title: "Favourite Outfits",
+      icon: "",
+      path: "/saved-outfits"
+    },
   ];
 
   title = "Home";

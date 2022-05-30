@@ -1,14 +1,16 @@
 ion-menu {
-  --ion-background-color: #f8e6e7 !important;
+  --ion-background-color: black !important;
+  --ion-text-color: white !important;
+}
+
+.icon-colour {
+  fill: white !important;
+  stroke: white !important;
 }
 
 .active-item {
-  color: var(--ion-color-primary);
-  font-weight: 500;
-  
-  ion-icon {
-    color: var(--ion-color-primary);
-  }
+  font-size: 18px;
+  font-family: DidonesqueStencilItalic;
 }
 
 @media (min-width: 768px) {
@@ -24,5 +26,11 @@ ion-menu {
 }
 
 .logout-btn {
-  margin: 20px 14px;
+  margin: 90px 0px;
+}
+
+.exit-icon {
+  fill: white;
+  font-size: 26px;
+  margin-right: 30px;
 }
