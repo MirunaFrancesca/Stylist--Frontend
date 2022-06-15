@@ -6,7 +6,6 @@ import { HttpEventType, HttpResponse } from '@angular/common/http';
 import { ApparelService } from 'src/app/services/apparel.service';
 import { myColours } from '../../model/colours.model';
 import { BehaviorSubject } from 'rxjs';
-import { AlertController } from '@ionic/angular';
 import { ActivatedRoute, Router } from '@angular/router';
 import { AlertService } from 'src/app/services/alert.service';
 import { myTypes } from 'src/app/model/types.model';
@@ -21,8 +20,7 @@ export class NewApparelPage implements OnInit {
   public isSubmitted = false;
   public saveApparelForm: FormGroup;
 
-  private _apparelUploadedImage =
-    '../../../assets/icon/apparel-default-image.png';
+  private _apparelUploadedImage = '../../../assets/icon/apparel-default-image.png';
   public blob: Blob;
   public isUploaded: boolean = false;
   private imageSourceChanged = new BehaviorSubject<any>(null);

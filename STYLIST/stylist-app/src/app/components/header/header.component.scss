@@ -7,7 +7,7 @@
   transform: translate(-65%, -50%);
 }
 
-@media (min-width: 768px) {
+@media (min-width: 888px) {
   .mobile-header {
     display: none;
   }
@@ -23,7 +23,7 @@
   }
 }
 
-@media (max-width: 768px) {
+@media (max-width: 888px) {
   .mobile-header {
     display: block;
   }
@@ -33,5 +33,6 @@
 }
 
 active-item {
-  border-bottom: 2px solid var(--ion-color-primary);
+  font-size: 18px;
+  font-family: DidonesqueStencilItalic;
 }

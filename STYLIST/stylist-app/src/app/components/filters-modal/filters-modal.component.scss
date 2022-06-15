@@ -1,10 +1,56 @@
 .title {
-    font-family: DidonesqueStencilItalic;
-    font-size: 18px;
+  font-family: DidonesqueStencilItalic;
+  font-size: 18px;
 }
 
-// ion-list {
-//     display: flex;
-//     flex-direction: row;
-//     flex-wrap: wrap;
-// }
+.colours-list {
+    display: flex;
+    flex-wrap: wrap;
+  }
+
+.option-wrapper {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  min-width: 130px;
+}
+
+.colour {
+  width: 20px;
+  height: 20px;
+  border-radius: 50px;
+  margin-right: 10px;
+  border-width: 2px;
+  border-color: black;
+  border-style: solid;
+}
+
+
+.selected-colour {
+  width: 20px;
+  height: 20px;
+  border-radius: 50px;
+  border-color: black;
+  border-width: 5px;
+  border-style: solid;
+  margin-right: 10px;
+}
+
+.maroon {
+    background-color: #800000;
+}
+
+.burgundy {
+    background-color: #800020;
+}
+
+.red {
+    background-color: #FF0000;
+}
+
+.crimson-red {
+    background-color: #DC143C;
+}
+
+
+

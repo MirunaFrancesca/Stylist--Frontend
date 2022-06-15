@@ -55,6 +55,8 @@
     </ion-card>
 
     <ion-img class="manequin-img" [src]="manequinImg"></ion-img>
+    <img *ngIf="!isSaved" class="heart-img" [src]="emptyHeartSvg" (click)="addToFavourites()"/>
+    <img *ngIf="isSaved" class="heart-img" [src]="fillHeartSvg" (click)="removeFromFavourites()"/>
   </ion-row>
 
   <ion-button *ngIf="outfit.length > 0" class="refresh-btn-wrapper" expand="full" color="secondary" position="bottom" (click)="fetchOutfit()">New Outfit</ion-button>

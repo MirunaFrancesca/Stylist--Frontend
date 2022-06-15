@@ -17,7 +17,7 @@
   </ion-col>
 
   <!-- Navigation -->
-  <ion-col size="7" class="ion-text-left">
+  <ion-col size="9" class="ion-text-left">
     <ion-button
       fill="clear"
       color="dark"
@@ -34,7 +34,7 @@
       routerDirection="root"
       routerLinkActive="active-item"
       [routerLinkActiveOptions]="{ exact: true }"
-    >Clothes</ion-button>
+    >Your Wardrobe</ion-button>
 
     <ion-button
       fill="clear"
@@ -44,5 +44,22 @@
       routerLinkActive="active-item"
       [routerLinkActiveOptions]="{ exact: true }"
     >New Apparel</ion-button>
+
+    <ion-button
+      fill="clear"
+      color="dark"
+      routerLink="/saved-outfits"
+      routerDirection="root"
+      routerLinkActive="active-item"
+      [routerLinkActiveOptions]="{ exact: true }"
+    >Favourite Outfits</ion-button>
   </ion-col>
+
+  <ion-col size="1" class="ion-align-items-center">
+    <ion-button class="logout-btn" (click)="logout()">
+      <ion-icon class="exit-icon" name="exit-outline" ></ion-icon>
+      Logout
+    </ion-button> 
+  </ion-col>
+  
 </ion-row>

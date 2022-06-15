@@ -18,7 +18,7 @@ export class MyWardrobePage implements OnInit {
   isLoaded: boolean = false;
   apparels: Array<Apparel> = [];
   types: string[] = myTypes;
-  colours: string[] = myColours;
+  colours = myColours;
 
   constructor(
     private apparelService: ApparelService,
@@ -94,7 +94,7 @@ export class MyWardrobePage implements OnInit {
     const modal = await this.modalController.create({
       component: FiltersModalComponent,
       breakpoints: [0, 0.5, 0.7, 1],
-      initialBreakpoint: 0.5,
+      initialBreakpoint: 1,
       handle: true,
       componentProps: {
         types: this.types,

@@ -1,4 +1,6 @@
 import { Component, ElementRef, Input, OnInit, ViewChild } from '@angular/core';
+import { Router } from '@angular/router';
+import { AuthService } from 'src/app/security/auth.service';
 
 @Component({
   selector: 'app-header',
@@ -10,7 +12,9 @@ export class HeaderComponent implements OnInit {
 
   @ViewChild('productbtn', { read: ElementRef }) productbtn: ElementRef;
 
-  constructor() {}
+  constructor(
+    private authService: AuthService,
+    private router: Router) {}
 
   ngOnInit() {}
 
@@ -25,4 +29,10 @@ export class HeaderComponent implements OnInit {
       this.dropdown = false;
     }
   }
+
+  async logout() {
+    await this.authService.logoutUser();
+    this.router.navigateByUrl('/login', {replaceUrl: true});
+  }
+
 }
