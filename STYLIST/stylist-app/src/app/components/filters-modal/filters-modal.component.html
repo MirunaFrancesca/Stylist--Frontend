@@ -1,14 +1,15 @@
 <ion-content class="component-content">
-  <ion-accordion-group>
-    <ion-accordion value="type">
+  <ion-accordion-group  value="types">
+    <ion-accordion value="types">
       <ion-item slot="header">
         <ion-label class="title">Types</ion-label>
       </ion-item>
 
-      <ion-list slot="content">
-        <ion-item *ngFor="let type of types" (click)="selectFilter(type)">
-          <ion-label>{{ type }}</ion-label>
-          <ion-checkbox slot="end"></ion-checkbox>
+      <ion-list slot="content" class="colours-list">
+        <ion-item lines="none" *ngFor="let type of types">
+          <div class="option-wrapper" (click)="selectType(type)">
+            <ion-label [ngClass]="{'selected-colour-label': isTypeSelected(type),  'colour-label': !isTypeSelected(type)}">{{ type | uppercase }}</ion-label>
+          </div>
         </ion-item>
       </ion-list>
     </ion-accordion>
@@ -19,15 +20,22 @@
       </ion-item>
 
       <ion-list slot="content" class="colours-list">
-        <ion-item lines="none" *ngFor="let colour of colours" (click)="selectFilter(colour)">
-          <div class="option-wrapper">
-            <!-- [ngClass]="{isColourSelected('colour[0]') ? 'selected-colour' : 'colour'} -->
-            <div id="colour[1]" class="colour" [ngClass]="{'selected-colour': isColourSelected(colour[0]), 'colour': !isColourSelected(colour[0])}" [style.background-color]="colour[1]" (click)="selectColour(colour[0])"></div>
-            <ion-label>{{ colour[0] }}</ion-label> 
+        <ion-item lines="none" *ngFor="let colour of colours">
+          <div class="option-wrapper" (click)="selectColour(colour[0])">
+            <div id="colour[1]" class="colour" [ngClass]="{'selected-colour': isColourSelected(colour[0]), 'colour': !isColourSelected(colour[0])}" [style.background-color]="colour[1]"></div>
+            <ion-label [ngClass]="{'selected-colour-label': isColourSelected(colour[0]),  'colour-label': !isColourSelected(colour[0])}">{{ colour[0] | uppercase }}</ion-label> 
           </div>  
-          <!-- <ion-checkbox slot="end"></ion-checkbox> -->
         </ion-item>
       </ion-list>
     </ion-accordion>
   </ion-accordion-group>
 </ion-content>
+
+<ion-footer class="ion-no-border" position="bottom">
+  <ion-toolbar>
+    <div class="footer">
+      <ion-button color="primary" (click)="clearFilters()" [class.visible]="hasChanges" [class.invisible]="!hasChanges">Clear all</ion-button>
+      <ion-button color="secondary" strong="true" (click)="applyFilters()" class="full">Done</ion-button>
+    </div>
+  </ion-toolbar>
+</ion-footer>

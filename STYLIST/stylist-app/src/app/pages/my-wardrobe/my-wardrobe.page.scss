@@ -80,7 +80,20 @@ ion-list {
 }
 
 .hanger-img {
-  width: 50px;
+  width: 170px !important;
+}
+
+.empty-container {
+  p {
+    font-size: 16px;
+    position: relative;
+    bottom: 35px;
+  }
+
+  .long-text {
+    width: 300px;
+    left: 45px;
+  }
 }
 
 

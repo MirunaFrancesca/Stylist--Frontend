@@ -6,31 +6,28 @@ import {Injectable} from '@angular/core';
 import { AuthService } from '../auth.service';
 
 @Injectable()
-export class AuthGuard implements CanActivate{
+export class AuthGuard implements CanActivate {
   constructor(private authService: AuthService,
               private router: Router,
               private alertController: AlertController) {
   }
 
-  canActivate(): Observable<boolean>{
+  canActivate(): Observable<boolean> {
     return this.authService.isAuthenticated.pipe(
       filter(val => val !== null),
       take(1),
        map(isAuthenticated => {
-        console.log('before canActivate(): ', isAuthenticated);
-
         if(!isAuthenticated){
-          this.alertController.create({
-            header: 'Unauthorized',
-            message: 'You are not allowed to access this page.',
-            buttons: ['OK']
-          }).then(alert => alert.present());
-          this.router.navigateByUrl('/');
+          // this.alertController.create({
+          //   header: 'Unauthorized',
+          //   message: 'You are not allowed to access this page.',
+          //   buttons: ['OK']
+          // }).then(alert => alert.present());
+          this.router.navigateByUrl('/login');
 
-          console.log('after canActivate()');
           return false;
-        }else{
-          console.log('after canActivate()');
+        }
+        else {
           return true;
         }
       })

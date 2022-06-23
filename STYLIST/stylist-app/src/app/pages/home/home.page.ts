@@ -71,7 +71,6 @@ export class HomePage implements OnInit {
         }
       },
       (err: any) => {
-        console.log(err);
         this.alertService.presentToast(
           'error-alert',
           'Could not add to favourites!'
@@ -97,7 +96,6 @@ export class HomePage implements OnInit {
         }
       },
       (err: any) => {
-        console.log(err);
         this.alertService.presentToast(
           'error-alert',
           'Could not remove from favourites!'

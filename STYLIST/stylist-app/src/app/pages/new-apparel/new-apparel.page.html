@@ -1,20 +1,20 @@
 <ion-header [translucent]="true">
   <ion-toolbar>
     <ion-buttons slot="start">
-      <ion-back-button defaultHref="/login"></ion-back-button>
+      <ion-back-button defaultHref="/my-wardrobe"></ion-back-button>
     </ion-buttons>
 
-    <ion-title>New apparel</ion-title>
+    <ion-title>{{ title }}</ion-title>
   </ion-toolbar>
 </ion-header>
 
 <ion-header collapse="condense">
   <ion-buttons slot="start">
-    <ion-back-button defaultHref="/login"></ion-back-button>
+    <ion-back-button defaultHref="/my-wardrobe"></ion-back-button>
   </ion-buttons>
   
   <ion-toolbar>
-    <ion-title size="large">New apparel</ion-title>
+    <ion-title size="large">{{ title }}</ion-title>
   </ion-toolbar>
 </ion-header>
 
@@ -52,7 +52,7 @@
       <ion-label position="floating">Colour</ion-label>
       <ion-select placeholder="Select Colour" formControlName="colour" required>
         <ion-select-option  *ngFor="let colour of colours" [value]="colour">
-          {{ colour }}
+          {{ colour[0] }}
           <ion-img></ion-img>
         </ion-select-option>
       </ion-select>

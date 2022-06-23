@@ -5,13 +5,13 @@
     <form [formGroup]="loginForm" (ngSubmit)="login()" novalidate vertical="bottom">
       <ion-item lines="none">
         <ion-input formControlName="username" placeholder="Username"></ion-input>
-        <ion-note *ngIf="isSubmitted && loginFormControls.username.errors?.required" slot="error">Username is required</ion-note>
+        <ion-note *ngIf="(loginFormControls.username.touched || isSubmitted) && loginFormControls.username.errors?.required" slot="error">Username is required</ion-note>
       </ion-item>
 
       <ion-item lines="none">
         <ion-input formControlName="password" [type]="showPassword ? 'text' : 'password'" placeholder="Password"></ion-input>
         <p class="pw-toggle" slot="end" (click)="showPassword = !showPassword"> {{ showPassword ? 'HIDE' : 'SHOW' }} </p>
-        <ion-note *ngIf="isSubmitted && loginFormControls.password.errors?.required" slot="error">Password is required</ion-note>
+        <ion-note *ngIf="(loginFormControls.password.touched || isSubmitted) && loginFormControls.password.errors?.required" slot="error">Password is required</ion-note>
       </ion-item>
 
       <ion-button type="submit" expand="block" class="login-btn">Sign In</ion-button>

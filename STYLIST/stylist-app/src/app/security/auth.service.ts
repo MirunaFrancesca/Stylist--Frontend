@@ -38,13 +38,30 @@ export class AuthService {
     );
   }
 
+  checkToken(token: string): Observable<boolean> {
+    return this.httpClient.get<boolean>(
+      this.backendUrl + `/checkToken?token=${token}`, this.requestOptions);
+  }
+
   async loadToken(){
     const token = await Storage.get({key: TOKEN_KEY});
-    if(token && token.value){
-      console.log('Set token: ', token.value);
-      this.token = token.value;
-      this.isAuthenticated.next(true);
-    } else {
+    if(token && token.value) {
+      this.checkToken(token.value).subscribe((res) => {
+        console.log(res);
+        if(res) {
+          this.token = token.value;
+          this.isAuthenticated.next(true);
+        }
+        else {
+          Storage.remove({key: TOKEN_KEY});
+          this.isAuthenticated.next(false);
+          console.log(token);
+          console.log("token expired");
+        }
+      })
+    } 
+    else {
+      Storage.remove({key: TOKEN_KEY});
       this.isAuthenticated.next(false);
     }
   }
@@ -58,7 +75,6 @@ export class AuthService {
       map((loginResponse: JwtToken) => loginResponse.jwtToken),
       switchMap(
         token => {
-          console.log('Token from server: ' + token);
           return from(Storage.set({key: TOKEN_KEY, value: token}));
         }
       ),

@@ -21,6 +21,7 @@ export class NewApparelPage implements OnInit {
   public saveApparelForm: FormGroup;
 
   private _apparelUploadedImage = '../../../assets/icon/apparel-default-image.png';
+  public title: string = "New Apparel";
   public blob: Blob;
   public isUploaded: boolean = false;
   private imageSourceChanged = new BehaviorSubject<any>(null);
@@ -45,6 +46,7 @@ export class NewApparelPage implements OnInit {
     });
 
     if (this.idApparel) {
+      this.title = "Edit Apparel";
       this.apparelService.getApparelImage(this.idApparel).subscribe((res) => {
         this.blob = res;
         const objectURL = URL.createObjectURL(res);
@@ -80,7 +82,7 @@ export class NewApparelPage implements OnInit {
         this.idApparel,
         this.blob,
         this.saveApparelForm.value.type,
-        this.saveApparelForm.value.colour
+        this.saveApparelForm.value.colour[0]
       )
       .subscribe(
         (event: any) => {
@@ -96,7 +98,6 @@ export class NewApparelPage implements OnInit {
           }
         },
         (err: any) => {
-          console.log(err);
           this.alertService.presentToast(
             'error-alert',
             'Could not save apparel!'

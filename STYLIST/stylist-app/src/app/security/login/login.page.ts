@@ -23,6 +23,7 @@ export class LoginPage implements OnInit {
   ) {}
 
   ngOnInit(): void {
+    console.log(this.authService.token);
     this.loginForm = this.formBuilder.group({
       username: ['', [Validators.required]],
       password: ['', [Validators.required]],
@@ -35,8 +36,7 @@ export class LoginPage implements OnInit {
 
   goToRegister(): void {
     this.router
-      .navigateByUrl('/register')
-      .then((r) => console.log('navigated'));
+      .navigateByUrl('/register');
   }
 
   async login() {
@@ -51,10 +51,9 @@ export class LoginPage implements OnInit {
             'success-alert',
             'Logged in successfully!'
           );
-          this.router.navigateByUrl('/my-wardrobe', { replaceUrl: true });
+          this.router.navigateByUrl('', { replaceUrl: true });
         },
         async (errorResponse) => {
-          console.log(errorResponse);
           this.alertService.presentToast('error-alert', 'Wrong credentials!');
         }
       );

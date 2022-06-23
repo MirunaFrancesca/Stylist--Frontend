@@ -6,24 +6,20 @@ import { AuthService } from '../auth.service';
 
 
 @Injectable()
-export class AutoLoginGuard implements CanActivate{
+export class AutoLoginGuard implements CanActivate {
   constructor(private authService: AuthService,
               private router: Router) {
   }
 
-  canActivate(): Observable<boolean>{
+  canActivate(): Observable<boolean> {
     return this.authService.isAuthenticated.pipe(
       filter(val => val !== null),
       take(1),
       map(isAuthenticated => {
-        console.log('before canActivate(): ', isAuthenticated);
-
         if(!isAuthenticated){
-          console.log('after canActivate()');
           return true;
-        }else{
-          this.router.navigateByUrl('/my-wardrobe', {replaceUrl: true});
-          console.log('after canActivate()');
+        } else {
+          this.router.navigateByUrl('/menu', {replaceUrl: true});
           return true;
         }
       })

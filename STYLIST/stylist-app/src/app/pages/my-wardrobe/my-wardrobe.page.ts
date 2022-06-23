@@ -14,11 +14,14 @@ import { myColours } from 'src/app/model/colours.model';
   styleUrls: ['./my-wardrobe.page.scss'],
 })
 export class MyWardrobePage implements OnInit {
-  public iconHanger = "../../../assets/icon/hanger.png";
+  public iconHanger = "../../../assets/icon/hanger-image.jpg";
   isLoaded: boolean = false;
   apparels: Array<Apparel> = [];
+  filteredApparels: Array<Apparel> = [];
   types: string[] = myTypes;
   colours = myColours;
+  filterTypes: string[] = [];
+  filterColours: string[] = [];
 
   constructor(
     private apparelService: ApparelService,
@@ -54,7 +57,9 @@ export class MyWardrobePage implements OnInit {
           const objectURL = URL.createObjectURL(res);
           item.imageUrl = objectURL;
         });
-      })
+      });
+      
+      this.filteredApparels = this.apparels;
     })
   }
 
@@ -77,6 +82,7 @@ export class MyWardrobePage implements OnInit {
             this.apparelService.deleteApparel(id).subscribe(
              (res) => {
               this.apparels = this.apparels.filter(item => item.id != id);
+              this.filteredApparels = this.apparels;
               this.alertService.presentToast("success-alert", "Item deleted successfully!");
              },
              (err) => {
@@ -98,7 +104,9 @@ export class MyWardrobePage implements OnInit {
       handle: true,
       componentProps: {
         types: this.types,
-        colours: this.colours
+        colours: this.colours,
+        selectedTypes: this.filterTypes,
+        selectedColours: this.filterColours
       }
     });
 
@@ -107,8 +115,27 @@ export class MyWardrobePage implements OnInit {
     const {data} = await modal.onWillDismiss();
 
     if (data) {
-      //this.filterProducts(ProductsPage.categoryMapper(data.category));
+      console.log(data);
+      this.filterClothes(data);
     }
+  }
+
+  filterClothes(filters: any): void {
+    if(!filters) return;
+    this.isLoaded = false;
+    
+    this.filteredApparels = this.apparels.filter(apparel => {
+      if(filters.types.length > 0 && filters.colours.length > 0) return filters.types.includes(apparel.type) && filters.colours.includes(apparel.colour.name);
+      if(filters.types.length > 0) return filters.types.includes(apparel.type);
+      if(filters.colours.length > 0) filters.colours.includes(apparel.colour.name);
+      return true;
+    });
+
+    console.log(this.filteredApparels);
+    console.log(this.apparels);
+    this.filterTypes = filters.types;
+    this.filterColours = filters. colours;
+    this.isLoaded = true;  
   }
 
 }

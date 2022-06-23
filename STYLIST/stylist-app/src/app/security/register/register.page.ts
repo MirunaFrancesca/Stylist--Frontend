@@ -12,6 +12,7 @@ import { User } from '../model/user';
 })
 export class RegisterPage implements OnInit {
   showPassword = false;
+  showConfirmPassword = false;
   isSubmitted = false;
   public registerForm: FormGroup;
 
@@ -28,7 +29,7 @@ export class RegisterPage implements OnInit {
       lastName: ['', [Validators.required]],
       username: ['', [Validators.required]],
       email: ['', [Validators.required]],
-      password: ['', [Validators.required, Validators.minLength(6)]],
+      password: ['', [Validators.required]],
       confirmPassword: ['', [Validators.required]]
     });
   }
@@ -38,12 +39,15 @@ export class RegisterPage implements OnInit {
   }
 
   public passwordAndConfirmMatch(): boolean{
+    console.log(this.registerForm.value.password);
+    console.log(this.registerForm.value.confirmPassword);
+    console.log(this.registerFormControls.confirmPassword.touched && !(this.registerForm.value.password === this.registerForm.value.confirmPassword));
     return this.registerForm.value.password === this.registerForm.value.confirmPassword;
   }
 
   async register() {
     this.isSubmitted = true;
-    if (!this.registerForm.valid) return false;
+    if (!this.registerForm.valid || !this.passwordAndConfirmMatch()) return false;
 
     const newUser: User = {
       firstName: this.registerForm.value.firstName,
@@ -62,7 +66,6 @@ export class RegisterPage implements OnInit {
         this.router.navigateByUrl('/login', { replaceUrl: true });
       },
       async (errorResponse) => {
-        console.log(errorResponse);
         this.alertService.presentToast(
           'error-alert',
           'Could not create account!'

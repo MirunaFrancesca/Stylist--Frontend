@@ -16,8 +16,8 @@
     New apparel
   </ion-button>
 
-  <ion-list *ngIf="apparels.length > 0; else emptyWardrobe">
-    <ion-item *ngFor="let apparel of apparels" lines="none">
+  <ion-list *ngIf="filteredApparels.length > 0; else emptyWardrobe">
+    <ion-item *ngFor="let apparel of filteredApparels" lines="none">
       <div class="card-wrapper">
         <div class="apparel-wrapper">
           <app-apparel [apparel]="apparel"></app-apparel>
@@ -41,7 +41,8 @@
   <ng-template #emptyWardrobe>
     <div class="empty-container">
       <ion-img class="hanger-img" [src]="iconHanger"></ion-img>
-      <p>No clothes yet</p>
+      <p *ngIf="apparels.length > 0" class="long-text">No clothes match the filter</p>
+      <p *ngIf="apparels.length == 0">No clothes yet</p>
     </div>
   </ng-template>
 

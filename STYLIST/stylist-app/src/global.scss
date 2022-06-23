@@ -46,6 +46,35 @@
   src: url(./assets/fonts/DidonesqueStencilRoman.otf);
 }
 
+@font-face {
+  font-family: DidonesqueStencilBold;
+  font-style: normal;
+  font-weight: 400;
+  src: url(./assets/fonts/DidonesqueStencilBold.otf);
+}
+
+@font-face {
+  font-family: DidonesqueStencilEleganteItalic;
+  font-style: normal;
+  font-weight: 400;
+  src: url(./assets/fonts/DidonesqueStencilEleganteItalic.otf);
+}
+
+@font-face {
+  font-family: BarlowCondensedMedium;
+  font-style: normal;
+  font-weight: 400;
+  src: url(./assets/fonts/BarlowCondensed-Medium.ttf);
+}
+
+@font-face {
+  font-family: BarlowCondensedRegular;
+  font-style: normal;
+  font-weight: 400;
+  src: url(./assets/fonts/BarlowCondensed-Regular.ttf);
+}
+
+
 :root {
   // Set the background of the entire app
   --ion-background-color: white;
