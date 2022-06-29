@@ -91,3 +91,35 @@ ion-col {
 .heart-img {
   width: 24px;
 }
+
+@media only screen and (min-width: 485px) {
+  .two-piece-wrapper {
+    .manequin-img {
+      width: 500px;
+    }
+
+    ion-card {
+      width: 300px;
+    }
+
+    .apparel-img {
+      width: 270px;
+      height: 220px;
+      object-fit: contain;
+    }
+  }
+}
+
+@media only screen and (min-width: 860px) and (max-width: 1250px){
+  .second-col {
+    position: relative;
+    right: 100px;
+  }
+}
+
+@media only screen and (min-width: 1250px){
+  .second-col {
+    position: relative;
+    right: 300px;
+  }
+}

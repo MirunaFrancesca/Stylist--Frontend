@@ -82,7 +82,7 @@ export class NewApparelPage implements OnInit {
         this.idApparel,
         this.blob,
         this.saveApparelForm.value.type,
-        this.saveApparelForm.value.colour[0]
+        this.saveApparelForm.value.colour
       )
       .subscribe(
         (event: any) => {

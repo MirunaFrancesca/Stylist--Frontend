@@ -51,7 +51,7 @@
     <ion-item lines="full">
       <ion-label position="floating">Colour</ion-label>
       <ion-select placeholder="Select Colour" formControlName="colour" required>
-        <ion-select-option  *ngFor="let colour of colours" [value]="colour">
+        <ion-select-option  *ngFor="let colour of colours" [value]="colour[0]">
           {{ colour[0] }}
           <ion-img></ion-img>
         </ion-select-option>
