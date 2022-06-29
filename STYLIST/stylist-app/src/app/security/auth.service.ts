@@ -45,6 +45,7 @@ export class AuthService {
 
   async loadToken(){
     const token = await Storage.get({key: TOKEN_KEY});
+ 
     if(token && token.value) {
       this.checkToken(token.value).subscribe((res) => {
         console.log(res);

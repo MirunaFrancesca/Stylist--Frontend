@@ -49,6 +49,8 @@ export class SavedOutfitsPage implements OnInit {
           });
         })
       }
+
+      console.log(this.outfits);
     })
   }
 

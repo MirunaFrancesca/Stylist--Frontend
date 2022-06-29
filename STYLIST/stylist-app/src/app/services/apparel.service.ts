@@ -1,4 +1,4 @@
-import { HttpClient, HttpHeaders, HttpRequest, HttpResponse } from '@angular/common/http';
+import { HttpClient, HttpHeaders, HttpParams, HttpRequest, HttpResponse } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { BehaviorSubject, Observable } from 'rxjs';
 import { Apparel } from '../model/apparel';
@@ -87,7 +87,8 @@ export class ApparelService {
   saveOutfit(firstId: number, secondId: number): Observable<any> {
     const formData: FormData = new FormData();
     formData.append('idFirst', firstId.toString()); 
-    formData.append('idSecond', secondId.toString());
+    if(secondId) formData.append('idSecond', secondId.toString());
+    else formData.append('idSecond', "-1");
 
     let req = new HttpRequest('POST', `${this.apiUrl}/save-outfit`, formData, {
       reportProgress: true,
@@ -101,7 +102,8 @@ export class ApparelService {
   deleteOutfit(firstId: number, secondId: number): Observable<any> {
     const formData: FormData = new FormData();
     formData.append('idFirst', firstId.toString()); 
-    formData.append('idSecond', secondId.toString());
+    if(secondId) formData.append('idSecond', secondId.toString());
+    else formData.append('idSecond', "-1");
 
     let req = new HttpRequest('PUT', `${this.apiUrl}/delete-saved-outfit`, formData, {
       reportProgress: true,
@@ -110,6 +112,15 @@ export class ApparelService {
     });
 
     return this.httpClient.request(req);
+  }
+
+  isOutfitSaved(firstId: number, secondId: number): Observable<any> {
+    let params;
+    if(secondId) params = new HttpParams().set("idFirst", firstId).set("idSecond", secondId);
+    else params = new HttpParams().set("idFirst", firstId).set("idSecond", -1); 
+
+    return this.httpClient.get(`${this.apiUrl}/is-outfit-saved`, { observe:'response', withCredentials: true, params: params });
+
   }
 
 }

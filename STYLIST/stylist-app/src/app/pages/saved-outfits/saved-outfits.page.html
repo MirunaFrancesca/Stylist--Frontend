@@ -14,7 +14,7 @@
     </ion-slide>
 
     <ion-slide *ngFor="let outfit of outfits">
-      <div class="outfit-container">
+      <div *ngIf="outfit.length > 1; else onePiece" class="outfit-container">
         <div class="apparel-container first-container">
           <ion-img class="top-img" [src]="outfit[0].imageUrl"></ion-img>
         </div>
@@ -23,6 +23,14 @@
           <ion-img class="bottom-img" [src]="outfit[1].imageUrl"></ion-img>
         </div>
       </div>
+
+      <ng-template #onePiece>
+        <div class="outfit-container">
+          <div class="one-piece-container">
+            <ion-img class="one-piece-img" [src]="outfit[0].imageUrl"></ion-img>
+          </div>
+        </div>
+      </ng-template>
     </ion-slide>
 
     <ion-slide>

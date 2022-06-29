@@ -19,7 +19,7 @@ export class HomePage implements OnInit {
 
   outfit: Array<Apparel> = [];
   isLoaded: boolean = false;
-  isSaved: boolean = false;
+  isSaved: boolean;
 
   constructor(
     private apparelService: ApparelService,
@@ -31,7 +31,7 @@ export class HomePage implements OnInit {
   }
 
   fetchOutfit(): void {
-    this.isLoaded= false;
+    this.isLoaded = false;
     this.isSaved = false;
 
     this.apparelService.getRandomOufit()
@@ -50,7 +50,15 @@ export class HomePage implements OnInit {
           const objectURL = URL.createObjectURL(res);
           item.imageUrl = objectURL;
         });
-      })
+      });
+
+      let secondId;
+      this.outfit[1] ? secondId = this.outfit[1].id : null;
+      this.apparelService.isOutfitSaved(this.outfit[0].id, secondId).subscribe(res => {
+          if(res.body) {
+            this.isSaved = true;
+          }
+      });
     })
   }
 
