@@ -46,7 +46,7 @@ export class MyWardrobePage implements OnInit {
     
     this.apparelService.getAllApparels()
     .pipe(
-      delay(500),
+      delay(100),
       finalize(() => this.isLoaded = true)
     )
     .subscribe(res => {

@@ -53,7 +53,6 @@
       <ion-select placeholder="Select Colour" formControlName="colour" required>
         <ion-select-option  *ngFor="let colour of colours" [value]="colour[0]">
           {{ colour[0] }}
-          <ion-img></ion-img>
         </ion-select-option>
       </ion-select>
       <ion-note *ngIf="isSubmitted && saveApparelFormControl.colour.errors?.required" slot="error">Colour is required.</ion-note>

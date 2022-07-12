@@ -7,7 +7,7 @@ import { Apparel } from '../model/apparel';
   providedIn: 'root',
 })
 export class ApparelService {
-  private apiUrl = 'http://localhost:8080/apparel';
+  private apiUrl = 'http://192.168.43.121:8080/apparel';
   private headerDict = {
       'Content-Type': 'application/json',
       'Accept': 'application/json',

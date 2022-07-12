@@ -16,7 +16,7 @@ export class AuthService {
   isAuthenticated: BehaviorSubject<boolean> = new BehaviorSubject<boolean>(null);
   token = '';
 
-  private backendUrl = 'http://localhost:8080/auth';
+  private backendUrl = 'http://192.168.43.121:8080/auth';
   private headerDict = {
     'Content-Type': 'application/json',
     'Accept': 'application/json',
@@ -45,7 +45,7 @@ export class AuthService {
 
   async loadToken(){
     const token = await Storage.get({key: TOKEN_KEY});
- 
+    // Storage.remove({key: TOKEN_KEY});
     if(token && token.value) {
       this.checkToken(token.value).subscribe((res) => {
         console.log(res);
