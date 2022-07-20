@@ -22,9 +22,17 @@ The homepage offers the app's recommendations for outfit of the day (OOTD).
 ![outfitGeneration](https://user-images.githubusercontent.com/73225206/179989210-b3d48343-3999-49b7-a9f6-ceb678eec6e9.jpg)
 
 
-Users can keep track of their ever-growing clothing attire by uploading photos of their clothes and enjoy their integrations into outfits generated through the application.
+
+Users can keep track of their ever-growing clothing attire by uploading photos of their clothes and enjoy their integrations into outfits generated through the application. They can also save their favourite oufits from the app so they can come back to them later.
+
+
 
 ![addApparel](https://user-images.githubusercontent.com/73225206/179989663-ae3c3376-10d3-41d8-937a-e9240351ecc0.png)
+
+
+
+![image (2)](https://user-images.githubusercontent.com/73225206/179992707-de49731c-da2d-42d4-bce2-d4b063574f29.png)
+
 
 
 
