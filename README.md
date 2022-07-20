@@ -19,6 +19,13 @@ Prior to using the application, each user has to login or create account.
 
 The homepage offers the app's recommendations for outfit of the day (OOTD). 
 
+![outfitGeneration](https://user-images.githubusercontent.com/73225206/179989210-b3d48343-3999-49b7-a9f6-ceb678eec6e9.jpg)
+
+
+Users can keep track of their ever-growing clothing attire by uploading photos of their clothes and enjoy their integrations into outfits generated through the application.
+
+
+
 
 
 
