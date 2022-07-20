@@ -24,6 +24,9 @@ The homepage offers the app's recommendations for outfit of the day (OOTD).
 
 Users can keep track of their ever-growing clothing attire by uploading photos of their clothes and enjoy their integrations into outfits generated through the application.
 
+![addApparel](https://user-images.githubusercontent.com/73225206/179989663-ae3c3376-10d3-41d8-937a-e9240351ecc0.png)
+
+
 
 
 
