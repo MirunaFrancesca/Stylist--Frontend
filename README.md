@@ -11,6 +11,8 @@ to enhance and up their game in photography, home decor, fashion, product design
 
 Each user can find in Stylist both a virtual wardrobe and a virtual "stylist" for matching their clothes into fashionable outfits.
 
+![authSS](https://user-images.githubusercontent.com/73225206/179988501-e8394291-2a27-4169-9432-3da468f4dccf.jpg)
+
 
 
 
